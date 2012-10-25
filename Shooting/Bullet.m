@@ -12,6 +12,7 @@
 @implementation Bullet
 @synthesize destinationPosition;
 @synthesize bulletPower,bulletSpeed;
+@synthesize isHtiing;
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
     return self;
 }
@@ -59,5 +60,9 @@
     else {
         return ccp(xy[1][0],xy[1][1]);
     }
+}
+-(void) setHitting{
+    isHitting = YES;
+    self.visible = NO;
 }
 @end
