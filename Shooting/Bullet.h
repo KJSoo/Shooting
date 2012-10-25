@@ -16,5 +16,6 @@
 @property CGPoint destinationPosition;
 @property float bulletPower,bulletSpeed;
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType;
--(void) settingDestinationPosition:(CGPoint) userPosition :(CGPoint) targetPosition; // 총알의 목적지 좌표 설정
+-(void) settingDestinationPosition:(CGPoint) userPosition :(CGPoint) targetPosition:(int)space;// 총알의 목적지 좌표 설정
+-(CGPoint) destination:(CGPoint) userPosition :(CGPoint) targetPosition:(int)space;
 @end

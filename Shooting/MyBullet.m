@@ -13,10 +13,12 @@
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
     if(bulletType == 1){
         self = [super initWithFile:@"myBullet1.png"];
-        bulletSpeed = 1.8;
+        bulletSpeed = 1.2;
         bulletPower = 10;
     }
-    [self settingDestinationPosition:userPosition :targetPosition];
+   // if(userPosition.x == targetPosition.x && userPosition.y == targetPosition.y)
+   //     targetPosition.x += 20;
+    [self settingDestinationPosition:userPosition :targetPosition :500];
     self.position = userPosition;
     return self;
 }

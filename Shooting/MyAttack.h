@@ -11,6 +11,8 @@
 #import "MyBullet.h"
 
 @interface MyAttack :CCNode{
+    CGPoint setUserPosition,setTargetPosition;
 }
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition;
+-(void) createBullet:(int)bulletType;
 @end
