@@ -23,7 +23,7 @@ static UserInfo *info=nil;
 -(id) init{
     if( (self = [super init]) ){
         character = 1;
-        myBullet = 1;
+        myBullet = 3;
         amountMoney = 0;
         shootSpeed = 0.15;
     }

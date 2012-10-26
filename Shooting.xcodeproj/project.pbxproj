@@ -143,6 +143,7 @@
 		D1CE125916383DA500F08F00 /* EnemyBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CE125816383DA500F08F00 /* EnemyBullet.m */; };
 		D1CE125C16383EB600F08F00 /* MyAttack.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CE125B16383EB600F08F00 /* MyAttack.m */; };
 		D1CE125F16385DF500F08F00 /* EnemyAttack.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CE125E16385DF500F08F00 /* EnemyAttack.m */; };
+		D1F1837C163A2ECB00BED00D /* GameDebugLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F1837B163A2ECB00BED00D /* GameDebugLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -416,6 +417,8 @@
 		D1CE125B16383EB600F08F00 /* MyAttack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttack.m; sourceTree = "<group>"; };
 		D1CE125D16385DF500F08F00 /* EnemyAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyAttack.h; sourceTree = "<group>"; };
 		D1CE125E16385DF500F08F00 /* EnemyAttack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyAttack.m; sourceTree = "<group>"; };
+		D1F1837A163A2ECB00BED00D /* GameDebugLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDebugLayer.h; sourceTree = "<group>"; };
+		D1F1837B163A2ECB00BED00D /* GameDebugLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDebugLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -865,6 +868,8 @@
 		D1CE12191636A53200F08F00 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				D1F1837A163A2ECB00BED00D /* GameDebugLayer.h */,
+				D1F1837B163A2ECB00BED00D /* GameDebugLayer.m */,
 				D1CE121A1636A55600F08F00 /* BackgroundLayer.h */,
 				D1CE121B1636A55600F08F00 /* BackgroundLayer.m */,
 				D1CE12331636D9F700F08F00 /* GameMenuLayer.h */,
@@ -1093,6 +1098,7 @@
 				D1CE125916383DA500F08F00 /* EnemyBullet.m in Sources */,
 				D1CE125C16383EB600F08F00 /* MyAttack.m in Sources */,
 				D1CE125F16385DF500F08F00 /* EnemyAttack.m in Sources */,
+				D1F1837C163A2ECB00BED00D /* GameDebugLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

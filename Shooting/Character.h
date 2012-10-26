@@ -12,7 +12,7 @@
 #import "MyAttack.h"
 @interface Character : CCSprite {
     int character;
-    float space;  //과녁과 캐릭터 사의에 간격
+    float space,shootSpeed;;  //과녁과 캐릭터 사의에 간격
     CCSprite *side,*target;
     CGPoint prePosition;
     MyAttack *attack;

@@ -7,7 +7,7 @@
 //
 
 #import "GameScene.h"
-
+#import "GameDebugLayer.h"
 
 @implementation GameScene
 +(CCScene *) scene
@@ -35,6 +35,9 @@
         
         gameActionLayer = [[GameActionLayer alloc]init];
         [self addChild:gameActionLayer];
+        
+        GameDebugLayer *debug = [[GameDebugLayer alloc]init];
+        [self addChild:debug];
     }
     return self;
 }

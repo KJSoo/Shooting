@@ -113,13 +113,19 @@
     [target setRotation:(int)(target.rotation+5)%360];
 }
 -(void) attack:(BOOL)present{
-    if(present == YES)
-        [self schedule:@selector(shootBullet) interval:[UserInfo sharedUserInfo].shootSpeed];
+    if(present == YES){
+        shootSpeed = [UserInfo sharedUserInfo].shootSpeed;
+        [self schedule:@selector(shootBullet) interval:shootSpeed];
+    }
     else if(present == NO)
         [self unscheduleAllSelectors];
 }
 -(void) shootBullet{
     [attack attack:side.position :target.position];
+    if(shootSpeed != [UserInfo sharedUserInfo].shootSpeed){
+        [self attack:NO];
+        [self attack:YES];
+    }
 }
 -(CCArray*) getAttack{
     return [attack children];

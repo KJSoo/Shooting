@@ -18,7 +18,6 @@
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition{
     setUserPosition = userPosition; setTargetPosition = targetPosition;
     int bulletType = [UserInfo sharedUserInfo].myBullet;
-    bulletType = 3;
     [self createBullet:bulletType]; 
 }
 -(void) createBullet:(int)bulletType{
