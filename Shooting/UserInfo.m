@@ -11,6 +11,7 @@
 
 @implementation UserInfo
 @synthesize character,myBullet,amountMoney;
+@synthesize sensitive;
 @synthesize shootSpeed;
 static UserInfo *info=nil;
 +(UserInfo*) sharedUserInfo{
@@ -25,6 +26,7 @@ static UserInfo *info=nil;
         character = 1;
         myBullet = 3;
         amountMoney = 0;
+        sensitive = 2;
         shootSpeed = 0.15;
     }
     return self;

@@ -36,6 +36,8 @@
         attack = [[MyAttack alloc] init];
         [self addChild:attack];
         [self attack:YES];
+        
+        sens = [UserInfo sharedUserInfo].sensitive;
     }
     return self;
 }
@@ -43,7 +45,7 @@
     if(mode == BEGIN)
         prePosition = position;
     else if(mode == MOVED){
-        [self moveCharacter:ccp(position.x - prePosition.x, position.y - prePosition.y)];
+        [self moveCharacter:CGPointMake(position.x - prePosition.x, position.y - prePosition.y)];
          prePosition = position;
     }
     else if(mode == ENDED)
@@ -51,6 +53,7 @@
 }
 -(void) moveCharacter:(CGPoint)position{
     //좌 우 이동 체크.
+    position = ccp(position.x * sens, position.y * sens);
     if((side.position.x + side.contentSize.width/2 + position.x <= 320 && position.x > 0) || (side.position.x - side.contentSize.width/2 + position.x >= 0 && position.x < 0))
         side.position = ccp(side.position.x + position.x, side.position.y);
     //상 하 이동 체크.
