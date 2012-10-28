@@ -17,7 +17,12 @@
         self.isTouchEnabled = YES;
         character = [[Character alloc]init];
         [self addChild:character];
-    }
+        
+        enemy = [[EnemyAttack alloc]init];
+        [self addChild:enemy];
+        [enemy setmyWave:1];
+        [enemy waveSetting];
+        }
     return self;
 }
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{  
@@ -37,6 +42,7 @@
 }
 -(void) dealloc{
     [character release];
+    [enemy release];
     [super dealloc];
 }
 @end

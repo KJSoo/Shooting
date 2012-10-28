@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "Enemy.h"
 @interface EnemyAttack : CCNode {
-    
+    id selectWave;
+    float delay;
+    int myWave;
+    CCSpriteBatchNode *enemyBatchNode;
+    CCAnimate *enemy01_Animate;
 }
-
+-(void) setmyWave:(int)wave;
+-(void) waveSetting;
+-(void) createEnemy:(int)level;
 @end

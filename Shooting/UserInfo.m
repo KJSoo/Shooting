@@ -13,6 +13,7 @@
 @synthesize character,myBullet,amountMoney;
 @synthesize sensitive;
 @synthesize shootSpeed;
+@synthesize userPosition;
 static UserInfo *info=nil;
 +(UserInfo*) sharedUserInfo{
     if(info == nil)

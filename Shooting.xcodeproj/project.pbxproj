@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D111F628163D52C6001683D5 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D111F627163D52C6001683D5 /* Enemy.m */; };
+		D111F631163D5C7C001683D5 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D111F630163D5C7C001683D5 /* enemy.png */; };
 		D1CE109916369EF800F08F00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109816369EF800F08F00 /* QuartzCore.framework */; };
 		D1CE109B16369EF800F08F00 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109A16369EF800F08F00 /* OpenGLES.framework */; };
 		D1CE109D16369EF800F08F00 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109C16369EF800F08F00 /* OpenAL.framework */; };
@@ -147,6 +149,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D111F626163D52C5001683D5 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		D111F627163D52C6001683D5 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		D111F630163D5C7C001683D5 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		D1CE109416369EF700F08F00 /* Shooting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1CE109816369EF800F08F00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D1CE109A16369EF800F08F00 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -440,6 +445,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D111F62B163D5439001683D5 /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				D111F630163D5C7C001683D5 /* enemy.png */,
+			);
+			path = Enemy;
+			sourceTree = "<group>";
+		};
 		D1CE108916369EF700F08F00 = {
 			isa = PBXGroup;
 			children = (
@@ -850,6 +863,8 @@
 				D1CE125816383DA500F08F00 /* EnemyBullet.m */,
 				D1CE125A16383EB500F08F00 /* MyAttack.h */,
 				D1CE125B16383EB600F08F00 /* MyAttack.m */,
+				D111F626163D52C5001683D5 /* Enemy.h */,
+				D111F627163D52C6001683D5 /* Enemy.m */,
 				D1CE125D16385DF500F08F00 /* EnemyAttack.h */,
 				D1CE125E16385DF500F08F00 /* EnemyAttack.m */,
 			);
@@ -883,6 +898,7 @@
 		D1CE12221636AAC800F08F00 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				D111F62B163D5439001683D5 /* Enemy */,
 				D1CE12231636AAC800F08F00 /* BackgroundLayer */,
 				D1CE12421636F13F00F08F00 /* GameActionLayer */,
 			);
@@ -976,6 +992,7 @@
 				D1CE12451636F13F00F08F00 /* side.png in Resources */,
 				D1CE12461636F13F00F08F00 /* target.png in Resources */,
 				D1CE1253163833AF00F08F00 /* myBullet1.png in Resources */,
+				D111F631163D5C7C001683D5 /* enemy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1116,7 @@
 				D1CE125C16383EB600F08F00 /* MyAttack.m in Sources */,
 				D1CE125F16385DF500F08F00 /* EnemyAttack.m in Sources */,
 				D1F1837C163A2ECB00BED00D /* GameDebugLayer.m in Sources */,
+				D111F628163D52C6001683D5 /* Enemy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

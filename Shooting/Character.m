@@ -124,6 +124,7 @@
         [self unscheduleAllSelectors];
 }
 -(void) shootBullet{
+    [UserInfo sharedUserInfo].userPosition = side.position;
     [attack attack:side.position :target.position];
     if(shootSpeed != [UserInfo sharedUserInfo].shootSpeed){
         [self attack:NO];

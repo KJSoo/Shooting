@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Character.h"
+#import "EnemyAttack.h"
 
 @interface GameActionLayer : CCLayer {
     Character *character;
+    EnemyAttack *enemy;
 }
 
 @end
