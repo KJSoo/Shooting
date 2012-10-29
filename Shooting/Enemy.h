@@ -18,6 +18,7 @@
     BOOL appear,plus,die;
     float speed;
     CCSpriteFrame *appearFrame[10],*moveFrame[10];
+    id moveAction;
 }
 @property BOOL appear;
 @property int hp,power,exp;

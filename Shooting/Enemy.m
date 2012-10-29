@@ -48,7 +48,7 @@
         [self removeAppearFrame];
         [self movePattern];
     }else{
-        [self performSelector:@selector(appearAnimation) withObject:nil afterDelay:0.05];
+        [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(appearAnimation) userInfo:nil repeats:NO];        
     }
 }
 -(void) moveAnimation{
@@ -58,7 +58,8 @@
         [self setDisplayFrame:moveFrame[--presentMoveFrame]];
     if(presentMoveFrame > moveFrameCount || presentMoveFrame == 0)
         plus = !plus;
-    [self performSelector:@selector(moveAnimation) withObject:nil afterDelay:0.1];
+    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.1],[CCCallFunc actionWithTarget:self selector:@selector(moveAnimation)], nil]];
+    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveAnimation) userInfo:nil repeats:NO];        
 }
 -(void) removeAppearFrame{
     for(int i = 0 ; i <= appearFrameCount ; i++){
@@ -78,9 +79,10 @@
     CGPoint userPosition = [UserInfo sharedUserInfo].userPosition;
     float distance = (pow(pow(userPosition.x - self.position.x,2)+pow(userPosition.y - self.position.y, 2), 0.5));
     float delay = distance/speed;
-    [self stopAllActions];
-    [self runAction:[CCMoveTo actionWithDuration:delay position:userPosition]];
-    [self performSelector:@selector(moveUser) withObject:nil afterDelay:0.5];
+    moveAction = [CCMoveTo actionWithDuration:delay position:userPosition];
+    [self stopAction:moveAction];
+    [self runAction:moveAction];
+    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.5],[CCCallFunc actionWithTarget:self selector:@selector(moveUser)], nil]];
 }/*
 -(int) hitting:(MyBullet*)bullet{
     if(bullet.isHtiing){

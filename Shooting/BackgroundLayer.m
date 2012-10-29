@@ -14,7 +14,9 @@
     }
     return self;
 }
--(void) menuScene{}
+-(void) menuScene{
+    [self gameScene];
+}
 -(void) gameScene{
     CCSprite *sky = [CCSprite spriteWithFile:@"sky.png"];
     sky.anchorPoint = CGPointZero;
@@ -25,6 +27,7 @@
     [self addChild:cloud];
 }
 -(void) dealloc{
+    NSLog(@"BackgroundLayer release");
     [cloud release];
     [super dealloc];
 }

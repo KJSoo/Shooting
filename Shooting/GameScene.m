@@ -8,7 +8,7 @@
 
 #import "GameScene.h"
 #import "GameDebugLayer.h"
-
+#import "MenuScene.h"
 @implementation GameScene
 +(CCScene *) scene
 {
@@ -36,12 +36,13 @@
         gameActionLayer = [[GameActionLayer alloc]init];
         [self addChild:gameActionLayer];
         
-        GameDebugLayer *debug = [[GameDebugLayer alloc]init];
-        [self addChild:debug];
+        //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
+        //[self addChild:debug];
     }
     return self;
 }
 -(void) dealloc{
+    NSLog(@"GameScene release");
     [bg release];
     [gameMenuLayer release];
     [gameActionLayer release];

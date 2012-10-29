@@ -10,5 +10,8 @@
 
 
 @implementation GameMenuLayer
-
+-(void) dealloc{
+    NSLog(@"GameMenuLayer release");
+    [super dealloc];
+}
 @end

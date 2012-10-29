@@ -154,6 +154,7 @@
     return side;
 }
 -(void) dealloc{
+    NSLog(@"Character release");
     [side release];
     [target release];
     [attack release];

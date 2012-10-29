@@ -31,4 +31,8 @@
     [self removeChild:cloud[i] cleanup:YES];
     [self createCloud:i];
 }
+-(void) dealloc{
+    NSLog(@"Cloud release");
+    [super dealloc];
+}
 @end

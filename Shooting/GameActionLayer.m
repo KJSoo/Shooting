@@ -23,7 +23,6 @@
         [enemy setmyWave:1];
         [enemy waveSetting];
         [self checkCrash];
-        //[self schedule:@selector(checkCrash) ];//충돌 체크
         }
     return self;
 }
@@ -43,25 +42,34 @@
     [character setPositions:CGPointZero mode:ENDED];
 }
 -(void) checkCrash{
-    for( Enemy *tempEnemy in [enemy getEnemyArray]){
+    CCSpriteBatchNode *enemyBatchNode = [enemy getEnemyArray];
+    CCArray *enemyArray = [enemyBatchNode children];
+    
+    for( Enemy *tempEnemy in enemyArray){
         if(tempEnemy.contentSize.width/2 + [character getSide].contentSize.width/2 > [self pointDistance:tempEnemy.position :[character getSide].position]){
             [character hitting:tempEnemy];
         }    //적 몬스터와 캐릭터의 충돌체크
+        
+    }
+    for( Enemy *tempEnemy in enemyArray){
         for(MyBullet* bullet in [character getAttack]){
             if(bullet.isHtiing == YES)
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
-                [enemy hittingEnemy:tempEnemy :bullet];
+                if([enemy hittingEnemy:tempEnemy :bullet])
+                    break;
             }
         }// 캐릭터의 총알과 적 유닛의 충돌 체크
     }
-    [self performSelector:@selector(checkCrash) withObject:nil afterDelay:0.01];
+    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.01],[CCCallFuncN actionWithTarget:self selector:@selector(checkCrash)], nil]];
 }
 -(float) pointDistance:(CGPoint)firstPoint:(CGPoint)secondPoint{
     return pow(pow(secondPoint.x - firstPoint.x,2) + pow(secondPoint.y - firstPoint.y, 2), 0.5);
 }
 -(void) dealloc{
+    NSLog(@"GameActionLayer release");
     [character release];
+    enemy.isRelease = YES;
     [enemy release];
     [super dealloc];
 }

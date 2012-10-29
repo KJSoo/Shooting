@@ -8,11 +8,12 @@
 
 #import "EnemyAttack.h"
 
-
+#define ENEMY 200
 @implementation EnemyAttack
+@synthesize isRelease;
 -(id) init{
     if(self = [super init]){
-        enemyBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"enemy.png"];
+        enemyBatchNode = [[CCSpriteBatchNode alloc]initWithFile:@"enemy.png" capacity:100];
         [self addChild:enemyBatchNode];
         delay = 1;
     }
@@ -26,35 +27,43 @@
     if(myWave == 1){
         [self createEnemy:1];
     }
-    [self performSelector:@selector(waveSetting) withObject:nil afterDelay:delay];
+    if(!isRelease)
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
 }
 -(void) createEnemy:(int)level{
     if(level == 1){
-        [enemyBatchNode addChild:[[Enemy alloc]initWithBatchNode:enemyBatchNode level:level]];
+        Enemy *tempEnemy = [[Enemy alloc]initWithBatchNode:enemyBatchNode level:level];
+        [enemyBatchNode addChild:tempEnemy z:1 tag:ENEMY];
     }
 }
--(void) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet{
+-(int) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet{
     if([bulletArray containsObject:[NSNumber numberWithInt:bullet.bulletID]])
-        return;
+        return 0;
     else{
         [bulletArray addObject:[NSNumber numberWithInt:bullet.bulletID]];
         if([enemy hitting:bullet]){
             [self removeEnemy:enemy];
         }
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:1];
+        return 1;
     }
 }
 -(void) removeEnemy:(Enemy*)sender{
     [sender release];
     [enemyBatchNode removeChild:sender cleanup:YES];
+    NSLog(@"%@    %d",sender,[sender retainCount]);
 }
--(void) removeID:(id)bulletID{
+-(void) removeID:(NSNumber*)bulletID{
     [bulletArray removeObject:bulletID];
 }
--(CCArray*) getEnemyArray{
-    return [enemyBatchNode children];
+-(CCSpriteBatchNode*) getEnemyArray{
+    return enemyBatchNode;
 }
 -(void) dealloc{
+    NSLog(@"EnemyAttack release");
+    while([[enemyBatchNode children]count])
+        [self removeEnemy:[enemyBatchNode getChildByTag:ENEMY]];
+    [enemyBatchNode release];
     [bulletArray release];
     [super dealloc];
 }

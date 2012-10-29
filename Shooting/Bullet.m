@@ -66,4 +66,7 @@
     isHitting = YES;
     self.visible = NO;
 }
+-(void) dealloc{
+    [super dealloc];
+}
 @end
