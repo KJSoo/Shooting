@@ -76,13 +76,17 @@
         [self moveUser];
 }
 -(void) moveUser{
+    if(moveAction){
+        [self stopAction:moveAction];
+    }
     CGPoint userPosition = [UserInfo sharedUserInfo].userPosition;
     float distance = (pow(pow(userPosition.x - self.position.x,2)+pow(userPosition.y - self.position.y, 2), 0.5));
     float delay = distance/speed;
-    moveAction = [CCMoveTo actionWithDuration:delay position:userPosition];
-    [self stopAction:moveAction];
+    moveAction = [CCSequence actions:[CCMoveTo actionWithDuration:delay position:userPosition],[CCDelayTime actionWithDuration:100], nil];
+    // stopAction 에서 액션이 끝나버리면 오류가 발생 -> 액션의 딜레이를 100초 추가하여 끝나지 않게함
     [self runAction:moveAction];
     [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.5],[CCCallFunc actionWithTarget:self selector:@selector(moveUser)], nil]];
+
 }/*
 -(int) hitting:(MyBullet*)bullet{
     if(bullet.isHtiing){
