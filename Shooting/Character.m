@@ -138,6 +138,7 @@
     }else{
         [attackArray addObject:[NSNumber numberWithInt:enemy.enemyID]];
         hp -= enemy.power;
+        NSLog(@"%d",hp);
         if(hp<= 0)
             NSLog(@"die");
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];

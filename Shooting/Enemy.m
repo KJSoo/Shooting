@@ -38,7 +38,6 @@
         self.position = ccp(220+arc4random()%100,arc4random()%480);
     }
     [self appearAnimation];
-    bulletArray = [[NSMutableArray alloc]init];
     return self;
 }
 -(void) appearAnimation{
@@ -97,27 +96,18 @@
     return 0;
 }*/
 -(int) hitting:(MyBullet*)bullet{
-    if([bulletArray containsObject:[NSNumber numberWithInt:bullet.bulletID]]){
-        return 0;
-    }else{
-        [bullet setHitting];
-        [bulletArray addObject:[NSNumber numberWithInt:bullet.bulletID]];
-        hp -= bullet.bulletPower;
-        if(hp<= 0 && die == NO){
-            die = YES;
-            return 1;
-        }
-        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:1];
+    [bullet setHitting];
+    hp -= bullet.bulletPower;
+    if(hp<= 0 && die == NO){
+        die = YES;
+        return 1;
     }
     return 0;
 }
--(void) removeID:(id)bulletID{
-    [bulletArray removeObject:bulletID];
-}
+
 -(void) dealloc{
     NSLog(@"Enemy release");
     [self removeMoveFrame];
-    [bulletArray release];
     [super dealloc];
 }
 @end

@@ -14,11 +14,13 @@
     float delay;
     int myWave;
     CCSpriteBatchNode *enemyBatchNode;
+    NSMutableArray *bulletArray;
 }
 -(void) setmyWave:(int)wave;
 -(void) waveSetting;
 -(void) createEnemy:(int)level;
 -(void) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet;
 -(void) removeEnemy:(id)sender;
+-(void) removeID:(id)bulletID;
 -(CCArray*) getEnemyArray;
 @end

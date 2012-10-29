@@ -16,6 +16,7 @@
         [self addChild:enemyBatchNode];
         delay = 1;
     }
+    bulletArray = [[NSMutableArray alloc]init];
     return self;
 }
 -(void) setmyWave:(int)wave{
@@ -33,15 +34,28 @@
     }
 }
 -(void) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet{
-    if([enemy hitting:bullet]){
-        [self removeEnemy:enemy];
+    if([bulletArray containsObject:[NSNumber numberWithInt:bullet.bulletID]])
+        return;
+    else{
+        [bulletArray addObject:[NSNumber numberWithInt:bullet.bulletID]];
+        if([enemy hitting:bullet]){
+            [self removeEnemy:enemy];
+        }
+        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:1];
     }
 }
 -(void) removeEnemy:(Enemy*)sender{
     [sender release];
     [enemyBatchNode removeChild:sender cleanup:YES];
 }
+-(void) removeID:(id)bulletID{
+    [bulletArray removeObject:bulletID];
+}
 -(CCArray*) getEnemyArray{
     return [enemyBatchNode children];
+}
+-(void) dealloc{
+    [bulletArray release];
+    [super dealloc];
 }
 @end

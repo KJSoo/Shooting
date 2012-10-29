@@ -18,7 +18,6 @@
     BOOL appear,plus,die;
     float speed;
     CCSpriteFrame *appearFrame[10],*moveFrame[10];
-    NSMutableArray *bulletArray;
 }
 @property BOOL appear;
 @property int hp,power,exp;
@@ -28,5 +27,4 @@
 -(void) movePattern;
 -(void) moveUser;
 -(int) hitting:(MyBullet*)bullet;
--(void) removeID:(id)bulletID;
 @end
