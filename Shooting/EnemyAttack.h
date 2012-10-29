@@ -14,9 +14,11 @@
     float delay;
     int myWave;
     CCSpriteBatchNode *enemyBatchNode;
-    CCAnimate *enemy01_Animate;
 }
 -(void) setmyWave:(int)wave;
 -(void) waveSetting;
 -(void) createEnemy:(int)level;
+-(void) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet;
+-(void) removeEnemy:(id)sender;
+-(CCArray*) getEnemyArray;
 @end

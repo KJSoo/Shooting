@@ -10,12 +10,15 @@
 #import "cocos2d.h"
 #import "UserInfo.h"
 #import "MyAttack.h"
+#import "Enemy.h"
 @interface Character : CCSprite {
-    int character,sens;
+    int character,sens,hp;
     float space,shootSpeed;;  //과녁과 캐릭터 사의에 간격
+    BOOL unbeatable;
     CCSprite *side,*target;
     CGPoint prePosition;
     MyAttack *attack;
+    NSMutableArray *attackArray;
 }
 -(void) setPositions:(CGPoint)position mode:(int)mode;
 -(void) moveCharacter:(CGPoint)position;
@@ -23,5 +26,8 @@
 -(void) intersection;
 -(void) attack:(BOOL)present;
 -(void) shootBullet;
+-(void) hitting:(Enemy*)enemy;
+-(void) removeID:(id)enemyID;
 -(CCArray*) getAttack;
+-(CCSprite*) getSide;
 @end

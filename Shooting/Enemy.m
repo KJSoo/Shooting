@@ -11,14 +11,16 @@
 
 @implementation Enemy
 @synthesize appear;
+@synthesize hp,power,exp,enemyID;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel{
     level = enemyLevel;
+    enemyID = arc4random();
     if (level == 1){
         self = [super initWithTexture:batchNode.texture rect:CGRectMake(0, 0, 30, 30)];
         hp = 100;
         power = 10;
         exp = 1;
-        speed = 2;
+        speed = 120;// 1초당 움직일 픽셀수
         for(int i=0 ; i < 9 ; i++){
             appearFrame[i] = [[CCSpriteFrame alloc] initWithTexture:batchNode.texture rect:CGRectMake(30 * i, 0, 30, 30)];
             appearFrameCount = i;
@@ -36,6 +38,7 @@
         self.position = ccp(220+arc4random()%100,arc4random()%480);
     }
     [self appearAnimation];
+    bulletArray = [[NSMutableArray alloc]init];
     return self;
 }
 -(void) appearAnimation{
@@ -75,13 +78,46 @@
 -(void) moveUser{
     CGPoint userPosition = [UserInfo sharedUserInfo].userPosition;
     float distance = (pow(pow(userPosition.x - self.position.x,2)+pow(userPosition.y - self.position.y, 2), 0.5));
-    float delay = distance/100;
+    float delay = distance/speed;
     [self stopAllActions];
     [self runAction:[CCMoveTo actionWithDuration:delay position:userPosition]];
     [self performSelector:@selector(moveUser) withObject:nil afterDelay:0.5];
+}/*
+-(int) hitting:(MyBullet*)bullet{
+    if(bullet.isHtiing){
+        return 0;
+    }else{
+        [bullet setHitting];
+        hp-= bullet.bulletPower;
+        if( hp <= 0 && !die){
+            die = YES;
+            return 1;
+        }
+    }
+    return 0;
+}*/
+-(int) hitting:(MyBullet*)bullet{
+    if([bulletArray containsObject:[NSNumber numberWithInt:bullet.bulletID]]){
+        return 0;
+    }else{
+        [bullet setHitting];
+        [bulletArray addObject:[NSNumber numberWithInt:bullet.bulletID]];
+        hp -= bullet.bulletPower;
+        if(hp<= 0 && die == NO){
+            die = YES;
+            return 1;
+        }
+        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:1];
+    }
+    return 0;
+}
+-(void) removeID:(id)bulletID{
+    [bulletArray removeObject:bulletID];
 }
 -(void) dealloc{
+    NSLog(@"Enemy release");
     [self removeMoveFrame];
+    [bulletArray release];
     [super dealloc];
 }
 @end

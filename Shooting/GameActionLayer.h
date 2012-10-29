@@ -15,5 +15,6 @@
     Character *character;
     EnemyAttack *enemy;
 }
-
+-(void) checkCrash;
+-(float) pointDistance:(CGPoint)firstPoint:(CGPoint)secondPoint;
 @end

@@ -12,10 +12,12 @@
 @interface Bullet : CCSprite {
     CGPoint destinationPosition;
     float bulletPower,bulletSpeed;
+    unsigned int bulletID;
     BOOL isHitting;
 }
 @property CGPoint destinationPosition;
 @property float bulletPower,bulletSpeed;
+@property unsigned int bulletID;
 @property BOOL isHtiing;
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType;
 -(void) setHitting;

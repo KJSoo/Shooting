@@ -12,6 +12,7 @@
 @implementation Bullet
 @synthesize destinationPosition;
 @synthesize bulletPower,bulletSpeed;
+@synthesize bulletID;
 @synthesize isHtiing;
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
     return self;

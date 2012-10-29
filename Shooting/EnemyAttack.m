@@ -32,4 +32,16 @@
         [enemyBatchNode addChild:[[Enemy alloc]initWithBatchNode:enemyBatchNode level:level]];
     }
 }
+-(void) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet{
+    if([enemy hitting:bullet]){
+        [self removeEnemy:enemy];
+    }
+}
+-(void) removeEnemy:(Enemy*)sender{
+    [sender release];
+    [enemyBatchNode removeChild:sender cleanup:YES];
+}
+-(CCArray*) getEnemyArray{
+    return [enemyBatchNode children];
+}
 @end

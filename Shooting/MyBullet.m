@@ -11,6 +11,7 @@
 
 @implementation MyBullet
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
+    bulletID = arc4random();
     if(bulletType == 1){
         self = [super initWithFile:@"myBullet1.png"];
         bulletSpeed = 1.2;

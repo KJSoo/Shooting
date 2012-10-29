@@ -9,17 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "UserInfo.h"
+#import "MyBullet.h"
 
 @interface Enemy : CCSprite {
+    unsigned int enemyID;
     int hp,power,level,exp;
     int presentAppearFrame,appearFrameCount,presentMoveFrame,moveFrameCount;
-    BOOL appear,plus;
+    BOOL appear,plus,die;
     float speed;
     CCSpriteFrame *appearFrame[10],*moveFrame[10];
+    NSMutableArray *bulletArray;
 }
 @property BOOL appear;
+@property int hp,power,exp;
+@property unsigned int enemyID;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel;
 -(void) appearAnimation;
 -(void) movePattern;
 -(void) moveUser;
+-(int) hitting:(MyBullet*)bullet;
+-(void) removeID:(id)bulletID;
 @end

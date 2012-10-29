@@ -10,7 +10,6 @@
 #define BEGIN 1
 #define MOVED 2
 #define ENDED 3
-
 @implementation Character
 -(id) init{
     if( self = [super init]){
@@ -19,6 +18,7 @@
         if(characterType == 1){
             side = [[CCSprite alloc]initWithFile:@"side.png"];
             target = [[CCSprite alloc]initWithFile:@"target.png"];
+            hp = 100;
         }else if(characterType == 2){
         }else if(characterType == 3){
         
@@ -38,6 +38,7 @@
         [self attack:YES];
         
         sens = [UserInfo sharedUserInfo].sensitive;
+        attackArray = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -131,13 +132,31 @@
         [self attack:YES];
     }
 }
+-(void) hitting:(Enemy*)enemy{
+    if([attackArray containsObject:[NSNumber numberWithInt:enemy.enemyID]]){
+        
+    }else{
+        [attackArray addObject:[NSNumber numberWithInt:enemy.enemyID]];
+        hp -= enemy.power;
+        if(hp<= 0)
+            NSLog(@"die");
+        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];
+    }
+}
+-(void) removeID:(NSNumber*)enemyID{
+    [attackArray removeObject:enemyID];
+}
 -(CCArray*) getAttack{
     return [attack children];
+}
+-(CCSprite*) getSide{
+    return side;
 }
 -(void) dealloc{
     [side release];
     [target release];
     [attack release];
+    [attackArray release];
     [super dealloc];
 }
 @end
