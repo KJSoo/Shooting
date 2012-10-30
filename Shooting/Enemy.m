@@ -11,7 +11,7 @@
 
 @implementation Enemy
 @synthesize appear;
-@synthesize hp,power,exp,enemyID;
+@synthesize hp,power,exp,enemyID,money;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel{
     level = enemyLevel;
     enemyID = arc4random();
@@ -20,6 +20,7 @@
         hp = 50;
         power = 10;
         exp = 1;
+        money = arc4random()%100;
         speed = 120;// 1초당 움직일 픽셀수
         for(int i=0 ; i < 9 ; i++){
             appearFrame[i] = [[CCSpriteFrame alloc] initWithTexture:batchNode.texture rect:CGRectMake(30 * i, 0, 30, 30)];
@@ -59,7 +60,6 @@
     if(presentMoveFrame > moveFrameCount || presentMoveFrame == 0)
         plus = !plus;
     [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.1],[CCCallFunc actionWithTarget:self selector:@selector(moveAnimation)], nil]];
-    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveAnimation) userInfo:nil repeats:NO];        
 }
 -(void) removeAppearFrame{
     for(int i = 0 ; i <= appearFrameCount ; i++){
@@ -87,20 +87,7 @@
     [self runAction:moveAction];
     [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.5],[CCCallFunc actionWithTarget:self selector:@selector(moveUser)], nil]];
 
-}/*
--(int) hitting:(MyBullet*)bullet{
-    if(bullet.isHtiing){
-        return 0;
-    }else{
-        [bullet setHitting];
-        hp-= bullet.bulletPower;
-        if( hp <= 0 && !die){
-            die = YES;
-            return 1;
-        }
-    }
-    return 0;
-}*/
+}
 -(int) hitting:(MyBullet*)bullet{
     [bullet setHitting];
     hp -= bullet.bulletPower;
@@ -112,6 +99,7 @@
 }
 
 -(void) dealloc{
+    NSLog(@"enemy release");
     [self removeMoveFrame];
     [super dealloc];
 }

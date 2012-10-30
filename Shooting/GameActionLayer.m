@@ -42,26 +42,46 @@
     [character setPositions:CGPointZero mode:ENDED];
 }
 -(void) checkCrash{
-    CCSpriteBatchNode *enemyBatchNode = [enemy getEnemyArray];
-    CCArray *enemyArray = [enemyBatchNode children];
-    
-    for( Enemy *tempEnemy in enemyArray){
+    [self characterWithMonstars];
+    [self cBulletWithMonstars];
+    [self moveGold];
+    [self characterWithGold];
+    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.01],[CCCallFuncN actionWithTarget:self selector:@selector(checkCrash)], nil]];
+}
+-(void) characterWithMonstars{
+    for( Enemy *tempEnemy in [enemy getEnemyArray]){
         if(tempEnemy.contentSize.width/2 + [character getSide].contentSize.width/2 > [self pointDistance:tempEnemy.position :[character getSide].position]){
             [character hitting:tempEnemy];
         }    //적 몬스터와 캐릭터의 충돌체크
         
     }
-    for( Enemy *tempEnemy in enemyArray){
+}
+-(void) cBulletWithMonstars{
+    for( Enemy *tempEnemy in [enemy getEnemyArray]){
         for(MyBullet* bullet in [character getAttack]){
             if(bullet.isHtiing == YES)
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
-                if([enemy hittingEnemy:tempEnemy :bullet])
+                if([enemy hittingEnemy:tempEnemy :bullet]){
                     break;
+                }
             }
         }// 캐릭터의 총알과 적 유닛의 충돌 체크
     }
-    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:0.01],[CCCallFuncN actionWithTarget:self selector:@selector(checkCrash)], nil]];
+}
+-(void) moveGold{
+    for( Gold *gold in [enemy getGoldArray])
+        [gold moveToUser:character];
+}
+-(void) characterWithGold{
+    for( Gold *gold in [enemy getGoldArray]){
+        if([self pointDistance:[character getSide].position :gold.position] < [character getSide].contentSize.width/2 + gold.contentSize.width/2){
+            [UserInfo sharedUserInfo].amountMoney += gold.gold;
+            [enemy removeGold:gold];
+            NSLog(@"%d",[UserInfo sharedUserInfo].amountMoney);
+            break;
+        }
+    }
 }
 -(float) pointDistance:(CGPoint)firstPoint:(CGPoint)secondPoint{
     return pow(pow(secondPoint.x - firstPoint.x,2) + pow(secondPoint.y - firstPoint.y, 2), 0.5);

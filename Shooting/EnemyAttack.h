@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Enemy.h"
+#import "Gold.h"
 @interface EnemyAttack : CCNode {
     id selectWave;
     float delay;
     int myWave;
     BOOL isRelease;
     CCSpriteBatchNode *enemyBatchNode;
+    CCArray* goldArray;
     NSMutableArray *bulletArray;
 }
 @property BOOL isRelease;
@@ -22,7 +24,9 @@
 -(void) waveSetting;
 -(void) createEnemy:(int)level;
 -(int) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet;
+-(void) removeGold:(Gold*)gold;
 -(void) removeEnemy:(id)sender;
 -(void) removeID:(id)bulletID;
--(CCSpriteBatchNode*) getEnemyArray;
+-(CCArray*) getEnemyArray;
+-(CCArray*) getGoldArray;
 @end

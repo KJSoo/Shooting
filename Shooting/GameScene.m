@@ -39,7 +39,11 @@
         //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
         //[self addChild:debug];
     }
+    //[self performSelector:@selector(t) withObject:nil afterDelay:5];
     return self;
+}
+-(void)t{
+    [[CCDirector sharedDirector]replaceScene:[MenuScene scene]];
 }
 -(void) dealloc{
     NSLog(@"GameScene release");

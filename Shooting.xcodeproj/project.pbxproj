@@ -46,6 +46,8 @@
 		D1BE57C6164005F50071A612 /* bullettype_2_8.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE57A2164005F50071A612 /* bullettype_2_8.png */; };
 		D1BE57C7164005F50071A612 /* bullettype_2_9.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE57A3164005F50071A612 /* bullettype_2_9.png */; };
 		D1BE57C9164006F00071A612 /* bullettype_2_36.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE57C8164006F00071A612 /* bullettype_2_36.png */; };
+		D1BE57CC164020210071A612 /* Gold.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BE57CB164020200071A612 /* Gold.m */; };
+		D1BE57CF1640218B0071A612 /* gold1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE57CE1640218B0071A612 /* gold1.png */; };
 		D1CE109916369EF800F08F00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109816369EF800F08F00 /* QuartzCore.framework */; };
 		D1CE109B16369EF800F08F00 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109A16369EF800F08F00 /* OpenGLES.framework */; };
 		D1CE109D16369EF800F08F00 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CE109C16369EF800F08F00 /* OpenAL.framework */; };
@@ -226,6 +228,9 @@
 		D1BE57A2164005F50071A612 /* bullettype_2_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_8.png; sourceTree = "<group>"; };
 		D1BE57A3164005F50071A612 /* bullettype_2_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_9.png; sourceTree = "<group>"; };
 		D1BE57C8164006F00071A612 /* bullettype_2_36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_36.png; sourceTree = "<group>"; };
+		D1BE57CA164020200071A612 /* Gold.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Gold.h; sourceTree = "<group>"; };
+		D1BE57CB164020200071A612 /* Gold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gold.m; sourceTree = "<group>"; };
+		D1BE57CE1640218B0071A612 /* gold1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold1.png; sourceTree = "<group>"; };
 		D1CE109416369EF700F08F00 /* Shooting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1CE109816369EF800F08F00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D1CE109A16369EF800F08F00 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -569,6 +574,14 @@
 				D1BE57A3164005F50071A612 /* bullettype_2_9.png */,
 			);
 			path = Bullet2;
+			sourceTree = "<group>";
+		};
+		D1BE57CD1640218B0071A612 /* Gold */ = {
+			isa = PBXGroup;
+			children = (
+				D1BE57CE1640218B0071A612 /* gold1.png */,
+			);
+			path = Gold;
 			sourceTree = "<group>";
 		};
 		D1CE108916369EF700F08F00 = {
@@ -985,6 +998,8 @@
 				D111F627163D52C6001683D5 /* Enemy.m */,
 				D1CE125D16385DF500F08F00 /* EnemyAttack.h */,
 				D1CE125E16385DF500F08F00 /* EnemyAttack.m */,
+				D1BE57CA164020200071A612 /* Gold.h */,
+				D1BE57CB164020200071A612 /* Gold.m */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1038,6 +1053,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BE577F164005F50071A612 /* Bullet2 */,
+				D1BE57CD1640218B0071A612 /* Gold */,
 				D1CE1252163833AF00F08F00 /* myBullet1.png */,
 				D1CE12431636F13F00F08F00 /* side.png */,
 				D1CE12441636F13F00F08F00 /* target.png */,
@@ -1149,6 +1165,7 @@
 				D1BE57C6164005F50071A612 /* bullettype_2_8.png in Resources */,
 				D1BE57C7164005F50071A612 /* bullettype_2_9.png in Resources */,
 				D1BE57C9164006F00071A612 /* bullettype_2_36.png in Resources */,
+				D1BE57CF1640218B0071A612 /* gold1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,6 +1290,7 @@
 				D1CE125F16385DF500F08F00 /* EnemyAttack.m in Sources */,
 				D1F1837C163A2ECB00BED00D /* GameDebugLayer.m in Sources */,
 				D111F628163D52C6001683D5 /* Enemy.m in Sources */,
+				D1BE57CC164020210071A612 /* Gold.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

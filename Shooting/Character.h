@@ -12,7 +12,7 @@
 #import "MyAttack.h"
 #import "Enemy.h"
 @interface Character : CCSprite {
-    int character,sens,hp;
+    int character,sens,hp,magnetism;
     float space,shootSpeed;;  //과녁과 캐릭터 사의에 간격
     BOOL unbeatable;
     CCSprite *side,*target;
@@ -20,6 +20,7 @@
     MyAttack *attack;
     NSMutableArray *attackArray;
 }
+@property int magnetism;
 -(void) setPositions:(CGPoint)position mode:(int)mode;
 -(void) moveCharacter:(CGPoint)position;
 -(void) moveTarget;

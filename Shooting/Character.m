@@ -11,6 +11,7 @@
 #define MOVED 2
 #define ENDED 3
 @implementation Character
+@synthesize magnetism;
 -(id) init{
     if( self = [super init]){
         //self.position = ccp(160,240);
@@ -19,6 +20,7 @@
             side = [[CCSprite alloc]initWithFile:@"side.png"];
             target = [[CCSprite alloc]initWithFile:@"target.png"];
             hp = 100;
+            magnetism = 80;
         }else if(characterType == 2){
         }else if(characterType == 3){
         
@@ -159,6 +161,7 @@
     [target release];
     [attack release];
     [attackArray release];
+    [self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }
 @end

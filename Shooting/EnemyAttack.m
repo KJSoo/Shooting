@@ -9,6 +9,7 @@
 #import "EnemyAttack.h"
 
 #define ENEMY 200
+#define GOLD 100
 @implementation EnemyAttack
 @synthesize isRelease;
 -(id) init{
@@ -18,6 +19,7 @@
         delay = 1;
     }
     bulletArray = [[NSMutableArray alloc]init];
+    goldArray = [[CCArray alloc]init];
     return self;
 }
 -(void) setmyWave:(int)wave{
@@ -28,7 +30,7 @@
         [self createEnemy:1];
     }
     if(!isRelease)
-        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay-0.7],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
 }
 -(void) createEnemy:(int)level{
     if(level == 1){
@@ -49,21 +51,39 @@
     }
 }
 -(void) removeEnemy:(Enemy*)sender{
+    Gold *gold = [[Gold alloc]init:sender];
+    [self addChild:gold z:1 tag:GOLD];
+    [goldArray addObject:gold];
     [sender release];
     [enemyBatchNode removeChild:sender cleanup:YES];
+}
+-(void) removeGold:(Gold*)gold{
+    [gold release];
+    [goldArray removeObject:gold];
+    [self removeChild:gold cleanup:YES];
 }
 -(void) removeID:(NSNumber*)bulletID{
     [bulletArray removeObject:bulletID];
 }
--(CCSpriteBatchNode*) getEnemyArray{
-    return enemyBatchNode;
+-(CCArray*) getEnemyArray{
+    return [enemyBatchNode children];
+}
+-(CCArray*) getGoldArray{
+    return goldArray;
 }
 -(void) dealloc{
-    NSLog(@"EnemyAttack release");
     while([[enemyBatchNode children]count])
         [self removeEnemy:[enemyBatchNode getChildByTag:ENEMY]];
+    while (1) {
+        Gold *g = (Gold*)[self getChildByTag:GOLD];
+        if(!g)
+            break;
+        [self removeGold:g];
+    }
     [enemyBatchNode release];
     [bulletArray release];
+    [goldArray release];
+    NSLog(@"EnemyAttack release");
     [super dealloc];
 }
 @end

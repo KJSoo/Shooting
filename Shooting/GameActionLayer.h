@@ -16,5 +16,10 @@
     EnemyAttack *enemy;
 }
 -(void) checkCrash;
+-(void) characterWithMonstars;
+-(void) cBulletWithMonstars;
+-(void) moveGold;
+-(void) characterWithGold;
+
 -(float) pointDistance:(CGPoint)firstPoint:(CGPoint)secondPoint;
 @end
