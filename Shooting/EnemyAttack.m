@@ -15,7 +15,7 @@
 -(id) init{
     if(self = [super init]){
         enemyBatchNode = [[CCSpriteBatchNode alloc]initWithFile:@"enemy.png" capacity:100];
-        [self addChild:enemyBatchNode];
+        [self addChild:enemyBatchNode z:2];
         delay = 1;
     }
     bulletArray = [[NSMutableArray alloc]init];
