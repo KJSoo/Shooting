@@ -8,7 +8,7 @@
 
 #import "MyAttack.h"
 #define BULLET 100
-
+#define BULLETTYPE2 -2
 @implementation MyAttack
 -(id) init{
     if(self = [super init]){
@@ -18,21 +18,32 @@
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition{
     setUserPosition = userPosition; setTargetPosition = targetPosition;
     int bulletType = [UserInfo sharedUserInfo].myBullet;
-    [self createBullet:bulletType]; 
+    [self createBullet:bulletType:setTargetPosition]; 
 }
--(void) createBullet:(int)bulletType{
+-(void) createBullet:(int)bulletType:(CGPoint)targetPosition{
     if(bulletType == 1){
-        MyBullet *bullet = [[MyBullet alloc]init:setUserPosition:setTargetPosition:bulletType];
+        MyBullet *bullet = [[MyBullet alloc]init:setUserPosition:targetPosition:1:0];
         [bullet runAction:[CCSequence actions:[CCMoveTo actionWithDuration:bullet.bulletSpeed position:bullet.destinationPosition],[CCCallFuncN actionWithTarget:self selector:@selector(removeBullet:)],nil]];
         [self addChild:bullet z:1 tag:BULLET];
     }else if(bulletType == 2){
-        setTargetPosition = [self anglePoint:[self getAngle:setUserPosition :setTargetPosition]+20 :setUserPosition :setTargetPosition];
-        [self createBullet:1];
-        setTargetPosition = [self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-40 :setUserPosition :setTargetPosition];
-        [self createBullet:1];
+        [self createBullet:1:[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]+10 :setUserPosition :targetPosition]];
+        [self createBullet:1:[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-10 :setUserPosition :targetPosition]];
     }else if(bulletType == 3){
-        [self createBullet:1];
-        [self createBullet:2];
+        [self createBullet:1:targetPosition];
+        [self createBullet:2:targetPosition];
+    }else if(bulletType == 4){
+        [self createBullet:3 :targetPosition];
+        [self createBullet:BULLETTYPE2 : targetPosition];
+    }else if(bulletType == BULLETTYPE2){
+        MyBullet *bullet = [[MyBullet alloc]init:setUserPosition:targetPosition:2:(int)[self getAngle:setUserPosition :setTargetPosition]];
+        [bullet runAction:[CCSequence actions:[CCMoveTo actionWithDuration:bullet.bulletSpeed position:bullet.destinationPosition],[CCCallFuncN actionWithTarget:self selector:@selector(removeBullet:)],nil]];
+        [self addChild:bullet z:1 tag:BULLET];
+    }
+    else if(bulletType == 5){
+        [self createBullet:4 :targetPosition];
+        [self createBullet:BULLETTYPE2 :[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]+15 :setUserPosition :targetPosition]];
+        [self createBullet:BULLETTYPE2 :[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-15 :setUserPosition :targetPosition]];
+        
     }
 
 }

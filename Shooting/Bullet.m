@@ -14,7 +14,7 @@
 @synthesize bulletPower,bulletSpeed;
 @synthesize bulletID;
 @synthesize isHtiing;
--(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
+-(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType:(int)angle{
     return self;
 }
 -(void) settingDestinationPosition:(CGPoint) userPosition :(CGPoint) targetPosition:(int)space{ // 총알의 목적지 좌표 설정
