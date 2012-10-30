@@ -23,7 +23,7 @@
 -(void) setPositions:(CGPoint)position mode:(int)mode;
 -(void) moveCharacter:(CGPoint)position;
 -(void) moveTarget;
--(void) intersection;
+-(CGPoint) intersection;
 -(void) attack:(BOOL)present;
 -(void) shootBullet;
 -(void) hitting:(Enemy*)enemy;

@@ -68,11 +68,11 @@
     // 두 객체사이의 거리
     if(distance < space){
     }else{
-        [self intersection];
+        target.position = [self intersection];
     }
 }
 
--(void) intersection
+-(CGPoint) intersection
 {
     float m, n;
     float xy[2][2];
@@ -93,7 +93,7 @@
         C = (side.position.x*side.position.x + side.position.y*side.position.y - space * space + n*n - 2*n*side.position.y);
         D = B1*B1 - A*C;
         if(D < 0 )
-            return;
+            return CGPointZero;
         xy[0][0] = -(B1 + sqrt(D))/A;
         xy[0][1] = m*xy[0][0] + n;
             
@@ -109,12 +109,12 @@
         xy[1][1] = side.position.y-space;
             
     }
-    if(pow(pow((target.position.x - xy[0][0]),2)+ pow((target.position.y-xy[0][1]),2), 0.5) < pow(pow((target.position.x - xy[1][0]),2)+ pow((target.position.y-xy[1][1]),2), 0.5))
-        target.position = ccp(xy[0][0],xy[0][1]);
-    else {
-        target.position = ccp(xy[1][0],xy[1][1]);
-    }
     [target setRotation:(int)(target.rotation+5)%360];
+    if(pow(pow((target.position.x - xy[0][0]),2)+ pow((target.position.y-xy[0][1]),2), 0.5) < pow(pow((target.position.x - xy[1][0]),2)+ pow((target.position.y-xy[1][1]),2), 0.5))
+        return ccp(xy[0][0],xy[0][1]);
+    else {
+        return ccp(xy[1][0],xy[1][1]);
+    }
 }
 -(void) attack:(BOOL)present{
     if(present == YES){

@@ -17,7 +17,7 @@
     enemyID = arc4random();
     if (level == 1){
         self = [super initWithTexture:batchNode.texture rect:CGRectMake(0, 0, 30, 30)];
-        hp = 100;
+        hp = 50;
         power = 10;
         exp = 1;
         speed = 120;// 1초당 움직일 픽셀수
