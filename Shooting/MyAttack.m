@@ -30,17 +30,6 @@
         [self createBullet:1];
         setTargetPosition = [self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-40 :setUserPosition :setTargetPosition];
         [self createBullet:1];
-        /*if((setUserPosition.x - setTargetPosition.x < 5) && (setUserPosition.x - setTargetPosition.x > -5)){
-            setTargetPosition.x += 5;
-            [self createBullet:1];
-            setTargetPosition.x -= 10;
-            [self createBullet:1];
-        }else{
-            setTargetPosition.y += 5;
-            [self createBullet:1];
-            setTargetPosition.y -= 10;
-            [self createBullet:1];
-        }*/
     }else if(bulletType == 3){
         [self createBullet:1];
         [self createBullet:2];
@@ -48,8 +37,6 @@
 
 }
 -(CGPoint) anglePoint:(float)angle:(CGPoint)mainPosition:(CGPoint)targetPosition{
-    //if((int)mainPosition.x == (int)targetPosition.x && (int)mainPosition.y == (int)targetPosition.y)
-    //    targetPosition = ccp(targetPosition.x + 1 , targetPosition.y +1);
     float radian = angle / 180 * M_PI;
     float distance = [self getDistance:mainPosition :targetPosition];
     
