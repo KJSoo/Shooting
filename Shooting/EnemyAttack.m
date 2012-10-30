@@ -51,7 +51,6 @@
 -(void) removeEnemy:(Enemy*)sender{
     [sender release];
     [enemyBatchNode removeChild:sender cleanup:YES];
-    NSLog(@"%@    %d",sender,[sender retainCount]);
 }
 -(void) removeID:(NSNumber*)bulletID{
     [bulletArray removeObject:bulletID];

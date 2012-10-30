@@ -112,7 +112,6 @@
 }
 
 -(void) dealloc{
-    NSLog(@"Enemy release");
     [self removeMoveFrame];
     [super dealloc];
 }
