@@ -11,13 +11,18 @@
 
 @implementation Gold
 @synthesize gold;
+@synthesize timer;
 -(id) init:(Enemy*)enemy{
     gold = enemy.money;
     if(gold < 100)
         self = [super initWithFile:@"gold1.png"];
     self.position = enemy.position;
     [self moveGold];
+    [self schedule:@selector(timeOver) interval:5];
     return self;
+}
+-(void) timeOver{
+    timer = YES;
 }
 -(void) moveGold{
     moveRandomPosition = [CCSequence actions:[CCMoveTo actionWithDuration:20 position:CGPointMake(arc4random()%320, arc4random()%480)],[CCDelayTime actionWithDuration:100000] ,nil];
@@ -33,7 +38,7 @@
     }
 }
 -(void)dealloc{
-    NSLog(@"gold release");
+    //NSLog(@"gold release");
     [super dealloc];
 }
 @end

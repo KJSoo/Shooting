@@ -140,7 +140,7 @@
     }else{
         [attackArray addObject:[NSNumber numberWithInt:enemy.enemyID]];
         hp -= enemy.power;
-        NSLog(@"%d",hp);
+        NSLog(@"HP %d",hp);
         if(hp<= 0)
             NSLog(@"die");
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];
@@ -154,6 +154,9 @@
 }
 -(CCSprite*) getSide{
     return side;
+}
+-(MyAttack*) getMyAttack{
+    return attack;
 }
 -(void) dealloc{
     NSLog(@"Character release");

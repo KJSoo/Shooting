@@ -63,6 +63,7 @@
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
                 if([enemy hittingEnemy:tempEnemy :bullet]){
+                    [[character getMyAttack]removeBullet:bullet];
                     break;
                 }
             }
@@ -74,13 +75,22 @@
         [gold moveToUser:character];
 }
 -(void) characterWithGold{
+    bool isBreak;
     for( Gold *gold in [enemy getGoldArray]){
         if([self pointDistance:[character getSide].position :gold.position] < [character getSide].contentSize.width/2 + gold.contentSize.width/2){
             [UserInfo sharedUserInfo].amountMoney += gold.gold;
             [enemy removeGold:gold];
-            NSLog(@"%d",[UserInfo sharedUserInfo].amountMoney);
+            NSLog(@"Gold %d",[UserInfo sharedUserInfo].amountMoney);
+            isBreak = YES;
             break;
         }
+        if(gold.timer == YES){
+            [enemy removeGold:gold];
+            isBreak = YES;
+            break;
+        }
+        //if(isBreak)
+        //    [self characterWithGold];
     }
 }
 -(float) pointDistance:(CGPoint)firstPoint:(CGPoint)secondPoint{

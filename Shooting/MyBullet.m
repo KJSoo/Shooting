@@ -21,8 +21,6 @@
         bulletSpeed = 1.2;
         bulletPower = 15;
     }
-   // if(userPosition.x == targetPosition.x && userPosition.y == targetPosition.y)
-   //     targetPosition.x += 20;
     [self settingDestinationPosition:userPosition :targetPosition :500];
     self.position = userPosition;
     return self;

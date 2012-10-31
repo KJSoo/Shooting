@@ -89,7 +89,7 @@
 
 }
 -(int) hitting:(MyBullet*)bullet{
-    [bullet setHitting];
+    bullet.isHtiing = YES;
     hp -= bullet.bulletPower;
     if(hp<= 0 && die == NO){
         die = YES;
@@ -99,7 +99,7 @@
 }
 
 -(void) dealloc{
-    NSLog(@"enemy release");
+    //NSLog(@"enemy release");
     [self removeMoveFrame];
     [super dealloc];
 }

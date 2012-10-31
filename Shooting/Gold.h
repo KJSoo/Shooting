@@ -12,10 +12,12 @@
 #import "Character.h"
 @interface Gold : CCSprite {
     int gold;
-    bool stop;
+    bool stop,timer;
     CCAction *moveRandomPosition;
 }
 @property int gold;
+@property bool timer;
 -(id) init:(Enemy*)enemy;
+-(void) timeOver;
 -(void) moveToUser:(Character*)user;
 @end

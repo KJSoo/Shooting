@@ -31,4 +31,5 @@
 -(void) removeID:(id)enemyID;
 -(CCArray*) getAttack;
 -(CCSprite*) getSide;
+-(MyAttack*) getMyAttack;
 @end

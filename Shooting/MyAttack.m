@@ -12,6 +12,14 @@
 @implementation MyAttack
 -(id) init{
     if(self = [super init]){
+        bulletAnimationSprite = [[CCSpriteBatchNode alloc]initWithFile:@"bulletAnimation.png" capacity:1];
+        animationArray = [[NSMutableArray alloc]init];
+        int select = arc4random()%3;
+        for(int i=0 ; i<6 ; i++){
+            [animationArray addObject:[CCSpriteFrame frameWithTexture:bulletAnimationSprite.texture rect:CGRectMake(25*i, select, 25, 25)]];
+        }
+        NSLog(@"%d",[animationArray count]);
+        animation = [[CCAnimation alloc]initWithFrames:animationArray delay:0.05];
     }
     return self;
 }
@@ -84,12 +92,31 @@
     return radian * 180 / M_PI;
 }
 -(void) removeBullet:(MyBullet*)sender{
-    [sender release];
-    [self removeChild:sender cleanup:YES];
+    if(sender.isAnimation == NO && sender.isHtiing){
+        [sender stopAllActions];
+        sender.isAnimation = YES;
+        [sender runAction:[CCSequence actions:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO],[CCCallFuncND actionWithTarget:self selector:@selector(removeAnimationBullet::) data:sender], nil]];
+    }
+    if(sender.isHtiing == NO && sender.isAnimation == NO){
+        [sender release];
+        [self removeChild:sender cleanup:YES];
+    }
+}
+-(void) removeAnimationBullet:(id)sender:(MyBullet*)bullet{
+    [bullet release];
+    [self removeChild:bullet cleanup:YES];
 }
 -(void) dealloc{
-    while([[self children]count])
-        [self removeBullet:(MyBullet*)[self getChildByTag:BULLET]];
+    while (1) {
+        MyBullet *b = (MyBullet*)[self getChildByTag:BULLET];
+        if(!b)
+            break;
+        [self removeAnimationBullet:nil:b];
+    }
+    [bulletAnimationSprite release];
+    [animation release];
+    [animationArray release];
+    NSLog(@"myAttack release");
     [super dealloc];
 }
 @end

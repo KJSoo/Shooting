@@ -13,7 +13,7 @@
 @synthesize destinationPosition;
 @synthesize bulletPower,bulletSpeed;
 @synthesize bulletID;
-@synthesize isHtiing;
+@synthesize isHtiing,isAnimation;
 -(id) init:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType:(int)angle{
     return self;
 }
@@ -61,10 +61,6 @@
     else {
         return ccp(xy[1][0],xy[1][1]);
     }
-}
--(void) setHitting{
-    isHitting = YES;
-    self.visible = NO;
 }
 -(void) dealloc{
     [super dealloc];

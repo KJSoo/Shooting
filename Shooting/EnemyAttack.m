@@ -46,7 +46,7 @@
         if([enemy hitting:bullet]){
             [self removeEnemy:enemy];
         }
-        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:1];
+        [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:bullet.bulletID] afterDelay:2];
         return 1;
     }
 }
