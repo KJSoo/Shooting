@@ -50,9 +50,10 @@
 }
 -(void) characterWithMonstars{
     for( Enemy *tempEnemy in [enemy getEnemyArray]){
-        if(tempEnemy.contentSize.width/2 + [character getSide].contentSize.width/2 > [self pointDistance:tempEnemy.position :[character getSide].position]){
-            [character hitting:tempEnemy];
-        }    //적 몬스터와 캐릭터의 충돌체크
+        if(tempEnemy.appear)
+            if(tempEnemy.contentSize.width/2 + [character getSide].contentSize.width/2 > [self pointDistance:tempEnemy.position :[character getSide].position]){
+                [character hitting:tempEnemy];
+            }    //적 몬스터와 캐릭터의 충돌체크
         
     }
 }
