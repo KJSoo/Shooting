@@ -16,7 +16,7 @@
         animationArray = [[NSMutableArray alloc]init];
         int select = arc4random()%3;
         for(int i=0 ; i<6 ; i++){
-            [animationArray addObject:[CCSpriteFrame frameWithTexture:bulletAnimationSprite.texture rect:CGRectMake(25*i, select, 25, 25)]];
+            [animationArray addObject:[CCSpriteFrame frameWithTexture:bulletAnimationSprite.texture rect:CGRectMake(25*i, 25*select, 25, 25)]];
         }
         NSLog(@"%d",[animationArray count]);
         animation = [[CCAnimation alloc]initWithFrames:animationArray delay:0.05];
