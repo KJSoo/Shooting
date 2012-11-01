@@ -19,7 +19,7 @@
         [self addChild:hpBatch];
         
         for(int i = 0 ; i < (int)piece ; i++){
-            CCSprite* gauge = [CCSprite spriteWithTexture:hpBatch.texture rect:CGRectMake(width*i, 0, width, 50)];
+            CCSprite* gauge = [CCSprite spriteWithTexture:hpBatch.texture rect:CGRectMake(width*i, 0, width, 30)];
             gauge.anchorPoint = CGPointZero;
             gauge.position = ccp(width * i,0);
             [hpBatch addChild:gauge z:0 tag:i];
@@ -38,7 +38,7 @@
                 gauge.opacity += 15;
         }
         else {
-            if(gauge.opacity - 15 > 0)
+            if(gauge.opacity - 15 > 70)
                 gauge.opacity -= 15;
         }
     }
