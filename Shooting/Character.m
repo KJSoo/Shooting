@@ -43,6 +43,8 @@
         
         sens = [UserInfo sharedUserInfo].sensitive;
         attackArray = [[NSMutableArray alloc]init];
+        
+        [self schedule:@selector(recovery) interval:1];
     }
     return self;
 }
@@ -119,6 +121,11 @@
     else {
         return ccp(xy[1][0],xy[1][1]);
     }
+}
+-(void) recovery{
+    if(hp + 5 < [UserInfo sharedUserInfo].originalHP)
+        hp += 5;
+    [UserInfo sharedUserInfo].hp = hp;
 }
 -(void) attack:(BOOL)present{
     if(present == YES){

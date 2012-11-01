@@ -25,6 +25,7 @@
 -(void) moveCharacter:(CGPoint)position;
 -(void) moveTarget;
 -(CGPoint) intersection;
+-(void) recovery;
 -(void) attack:(BOOL)present;
 -(void) shootBullet;
 -(void) hitting:(Enemy*)enemy;

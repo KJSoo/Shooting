@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AB8E73A1642F56F00226D29 /* hpBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB8E7391642F56F00226D29 /* hpBar.png */; };
 		D111F628163D52C6001683D5 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D111F627163D52C6001683D5 /* Enemy.m */; };
 		D111F631163D5C7C001683D5 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D111F630163D5C7C001683D5 /* enemy.png */; };
 		D19B6E571640DBB200EAB98E /* bulletAnimation.png in Resources */ = {isa = PBXBuildFile; fileRef = D19B6E561640DBB200EAB98E /* bulletAnimation.png */; };
@@ -189,6 +190,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AB8E7391642F56F00226D29 /* hpBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hpBar.png; sourceTree = "<group>"; };
 		D111F626163D52C5001683D5 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		D111F627163D52C6001683D5 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		D111F630163D5C7C001683D5 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
@@ -526,6 +528,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AB8E7381642F56F00226D29 /* GameMenuLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2AB8E7391642F56F00226D29 /* hpBar.png */,
+			);
+			name = GameMenuLayer;
+			path = Image/GameMenuLayer;
+			sourceTree = SOURCE_ROOT;
+		};
 		D111F62B163D5439001683D5 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1047,7 @@
 				D111F62B163D5439001683D5 /* Enemy */,
 				D1CE12231636AAC800F08F00 /* BackgroundLayer */,
 				D1CE12421636F13F00F08F00 /* GameActionLayer */,
+				2AB8E7381642F56F00226D29 /* GameMenuLayer */,
 			);
 			path = Image;
 			sourceTree = SOURCE_ROOT;
@@ -1170,6 +1182,7 @@
 				D1BE57C9164006F00071A612 /* bullettype_2_36.png in Resources */,
 				D1BE57CF1640218B0071A612 /* gold1.png in Resources */,
 				D19B6E571640DBB200EAB98E /* bulletAnimation.png in Resources */,
+				2AB8E73A1642F56F00226D29 /* hpBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

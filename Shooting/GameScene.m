@@ -28,14 +28,13 @@
     if(self = [super init]){
         bg = [[BackgroundLayer alloc]init];
         [bg gameScene];
-        [self addChild:bg]; // add background
-        
-        gameMenuLayer = [[GameMenuLayer alloc]init];
-        [self addChild:gameMenuLayer];
+        [self addChild:bg z:0]; // add background
         
         gameActionLayer = [[GameActionLayer alloc]init];
-        [self addChild:gameActionLayer];
+        [self addChild:gameActionLayer z:2];
         
+        gameMenuLayer = [[GameMenuLayer alloc]init];
+        [self addChild:gameMenuLayer z:1];
         //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
         //[self addChild:debug];
     }

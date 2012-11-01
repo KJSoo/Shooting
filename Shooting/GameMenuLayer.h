@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "UserInfo.h"
 @interface GameMenuLayer : CCLayer {
-    int money;
+    UserInfo *info;
+    float piece;
+    CCSpriteBatchNode *hpBatch;
 }
-
+-(void) hpChange;
 @end
