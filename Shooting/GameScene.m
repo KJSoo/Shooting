@@ -38,7 +38,7 @@
         //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
         //[self addChild:debug];
     }
-    //[self performSelector:@selector(t) withObject:nil afterDelay:7];
+    [self performSelector:@selector(t) withObject:nil afterDelay:7];
     return self;
 }
 -(void)t{

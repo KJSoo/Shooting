@@ -45,6 +45,7 @@
 }
 -(void) dealloc{
     NSLog(@"GameMenuLayer release");
+    [hpBatch removeAllChildrenWithCleanup:YES];
     [hpBatch release];
     [super dealloc];
 }
