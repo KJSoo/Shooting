@@ -10,7 +10,7 @@
 
 
 @implementation Enemy
-@synthesize appear;
+@synthesize appear,isDie;
 @synthesize hp,power,exp,enemyID,money;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel{
     level = enemyLevel;
@@ -91,8 +91,8 @@
 -(int) hitting:(MyBullet*)bullet{
     bullet.isHtiing = YES;
     hp -= bullet.bulletPower;
-    if(hp<= 0 && die == NO){
-        die = YES;
+    if(hp<= 0 && isDie == NO){
+        isDie = YES;
         return 1;
     }
     return 0;

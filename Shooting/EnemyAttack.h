@@ -18,6 +18,9 @@
     CCSpriteBatchNode *enemyBatchNode;
     CCArray* goldArray;
     NSMutableArray *bulletArray;
+    
+    NSMutableArray *dieAnimationArray;
+    CCAnimation *animation;
 }
 @property BOOL isRelease;
 -(void) setmyWave:(int)wave;
@@ -26,6 +29,7 @@
 -(int) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet;
 -(void) removeGold:(Gold*)gold;
 -(void) removeEnemy:(id)sender;
+-(void) realRemoveEnemy:(Enemy*)enemy;
 -(void) removeID:(id)bulletID;
 -(CCArray*) getEnemyArray;
 -(CCArray*) getGoldArray;

@@ -17,6 +17,12 @@
         enemyBatchNode = [[CCSpriteBatchNode alloc]initWithFile:@"enemy.png" capacity:100];
         [self addChild:enemyBatchNode z:2];
         delay = 1;
+        
+        dieAnimationArray = [[NSMutableArray alloc]init];
+        for(int i=0 ; i<16 ; i++){
+            [dieAnimationArray addObject:[CCSpriteFrame frameWithTexture:enemyBatchNode.texture rect:CGRectMake(30*i,61, 30, 29)]];
+        }
+        animation = [[CCAnimation alloc]initWithFrames:dieAnimationArray delay:0.03];
     }
     bulletArray = [[NSMutableArray alloc]init];
     goldArray = [[CCArray alloc]init];
@@ -54,8 +60,16 @@
     Gold *gold = [[Gold alloc]init:sender];
     [self addChild:gold z:1 tag:GOLD];
     [goldArray addObject:gold];
-    [sender release];
-    [enemyBatchNode removeChild:sender cleanup:YES];
+    [sender stopAllActions];
+    [sender unscheduleAllSelectors];
+    //[sender runAction:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:YES]];
+    [sender runAction:[CCSequence actions:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:YES],[CCCallFuncN actionWithTarget:self selector:@selector(realRemoveEnemy:)], nil]];
+    //[sender release];
+    //[enemyBatchNode removeChild:sender cleanup:YES];
+}
+-(void) realRemoveEnemy:(Enemy*)enemy{
+    [enemy release];
+    [enemyBatchNode removeChild:enemy cleanup:YES];
 }
 -(void) removeGold:(Gold*)gold{
     [gold release];
@@ -73,7 +87,7 @@
 }
 -(void) dealloc{
     while([[enemyBatchNode children]count])
-        [self removeEnemy:[enemyBatchNode getChildByTag:ENEMY]];
+        [self realRemoveEnemy:(Enemy*)[enemyBatchNode getChildByTag:ENEMY]];
     while (1) {
         Gold *g = (Gold*)[self getChildByTag:GOLD];
         if(!g)
@@ -83,6 +97,8 @@
     [enemyBatchNode release];
     [bulletArray release];
     [goldArray release];
+    [dieAnimationArray release];
+    [animation release];
     NSLog(@"EnemyAttack release");
     [super dealloc];
 }

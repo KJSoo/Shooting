@@ -50,7 +50,7 @@
 }
 -(void) characterWithMonstars{
     for( Enemy *tempEnemy in [enemy getEnemyArray]){
-        if(tempEnemy.appear)
+        if(tempEnemy.appear && tempEnemy.isDie == NO)
             if(tempEnemy.contentSize.width/2 + [character getSide].contentSize.width/2 > [self pointDistance:tempEnemy.position :[character getSide].position]){
                 [character hitting:tempEnemy];
             }    //적 몬스터와 캐릭터의 충돌체크
@@ -63,7 +63,7 @@
             if(bullet.isHtiing == YES)
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
-                if([enemy hittingEnemy:tempEnemy :bullet]){
+                if(tempEnemy.isDie == NO && [enemy hittingEnemy:tempEnemy :bullet] ){
                     [[character getMyAttack]removeBullet:bullet];
                     break;
                 }

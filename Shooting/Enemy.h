@@ -15,12 +15,12 @@
     unsigned int enemyID;
     int hp,power,level,exp,money;
     int presentAppearFrame,appearFrameCount,presentMoveFrame,moveFrameCount;
-    BOOL appear,plus,die;
+    BOOL appear,plus,isDie;
     float speed;
     CCSpriteFrame *appearFrame[10],*moveFrame[10];
     id moveAction;
 }
-@property BOOL appear;
+@property BOOL appear,isDie;
 @property int hp,power,exp,money;
 @property unsigned int enemyID;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel;
