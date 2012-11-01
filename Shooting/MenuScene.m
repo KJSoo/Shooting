@@ -45,6 +45,8 @@ enum {GAMESCENE,SHOPSCENE};
         menuNavigation = [CCMenu menuWithItems:gameScene,shopScene, nil];
         [menuNavigation alignItemsVertically];
         [self addChild:menuNavigation];
+        
+        info = [UserInfo sharedUserInfo];
 	}
 	return self;
 }
@@ -52,6 +54,10 @@ enum {GAMESCENE,SHOPSCENE};
 -(void) selectMenu:(id)sender{
     CCMenuItem *receive = sender;
     if(receive.tag == GAMESCENE){
+        info.money = 0;
+        info.hp = 0;
+        info.point = 0;
+        
         [[CCDirector sharedDirector] replaceScene:[GameScene scene]];
     }else if(receive.tag = SHOPSCENE){
         [[CCDirector sharedDirector] replaceScene:[ShopScene scene]];

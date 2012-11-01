@@ -10,10 +10,11 @@
 
 
 @implementation UserInfo
-@synthesize character,myBullet,amountMoney;
+@synthesize character,myBullet,amountMoney,level;
 @synthesize sensitive;
 @synthesize shootSpeed;
 @synthesize userPosition;
+@synthesize money,point,exp,hp,originalHP;
 static UserInfo *info=nil;
 +(UserInfo*) sharedUserInfo{
     if(info == nil)
@@ -24,6 +25,11 @@ static UserInfo *info=nil;
 }
 -(id) init{
     if( (self = [super init]) ){
+        money=0;
+        point=0;
+        exp=0;
+        hp=0;
+        
         character = 1;
         myBullet = 5;
         amountMoney = 0;

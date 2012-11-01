@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "BackgroundLayer.h"
+#import "UserInfo.h"
 
 @interface MenuScene : CCLayer {
     BackgroundLayer *bg;
     CCMenuItem *gameScene,*shopScene;;
     CCMenu *menuNavigation;
+    UserInfo *info;
 }
 +(CCScene *) scene;
 -(void) selectMenu:(id)sender;

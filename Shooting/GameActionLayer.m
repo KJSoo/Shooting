@@ -79,9 +79,8 @@
     bool isBreak;
     for( Gold *gold in [enemy getGoldArray]){
         if([self pointDistance:[character getSide].position :gold.position] < [character getSide].contentSize.width/2 + gold.contentSize.width/2){
-            [UserInfo sharedUserInfo].amountMoney += gold.gold;
+            [UserInfo sharedUserInfo].money += gold.gold;
             [enemy removeGold:gold];
-            NSLog(@"Gold %d",[UserInfo sharedUserInfo].amountMoney);
             isBreak = YES;
             break;
         }

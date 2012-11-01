@@ -29,6 +29,8 @@
         }else {
             NSLog(@"Error characterType : Object Character.m");
         }
+        [UserInfo sharedUserInfo].originalHP = hp;
+        [UserInfo sharedUserInfo].hp = hp;
         space = side.contentSize.width/2 + target.contentSize.width/2 + 5;//과녁과 캐릭터 사의에 간격
         side.position = ccp(160,240);
         target.position = ccp(160,240);
@@ -145,6 +147,7 @@
             NSLog(@"die");
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];
     }
+    [UserInfo sharedUserInfo].hp = hp;
 }
 -(void) removeID:(NSNumber*)enemyID{
     [attackArray removeObject:enemyID];
