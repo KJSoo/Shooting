@@ -110,10 +110,10 @@
     {
         xy[0][0] = side.position.x;
         xy[0][1] = side.position.y+space;
-            
+
         xy[1][0] = side.position.x;
         xy[1][1] = side.position.y-space;
-            
+
     }
     [target setRotation:(int)(target.rotation+5)%360];
     if(pow(pow((target.position.x - xy[0][0]),2)+ pow((target.position.y-xy[0][1]),2), 0.5) < pow(pow((target.position.x - xy[1][0]),2)+ pow((target.position.y-xy[1][1]),2), 0.5))
