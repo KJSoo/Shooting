@@ -7,7 +7,7 @@
 //
 
 #import "EnemyAttack.h"
-
+#import "SimpleAudioEngine.h"
 #define ENEMY 200
 #define GOLD 100
 @implementation EnemyAttack
@@ -57,6 +57,7 @@
     }
 }
 -(void) removeEnemy:(Enemy*)sender{
+    [[SimpleAudioEngine sharedEngine]playEffect:@"monstarsdie.mp3"];
     Gold *gold = [[Gold alloc]init:sender];
     [self addChild:gold z:1 tag:GOLD];
     [goldArray addObject:gold];

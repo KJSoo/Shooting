@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameDebugLayer.h"
 #import "MenuScene.h"
+#import "SimpleAudioEngine.h"
 @implementation GameScene
 +(CCScene *) scene
 {
@@ -26,6 +27,7 @@
 }
 -(id) init{
     if(self = [super init]){
+        [[SimpleAudioEngine sharedEngine]playBackgroundMusic:@"gameBackground.mp3" loop:YES];
         bg = [[BackgroundLayer alloc]init];
         [bg gameScene];
         [self addChild:bg z:0]; // add background

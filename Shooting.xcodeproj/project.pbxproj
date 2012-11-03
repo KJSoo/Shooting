@@ -10,6 +10,11 @@
 		2AB8E73A1642F56F00226D29 /* hpBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB8E7391642F56F00226D29 /* hpBar.png */; };
 		D111F628163D52C6001683D5 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D111F627163D52C6001683D5 /* Enemy.m */; };
 		D111F631163D5C7C001683D5 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D111F630163D5C7C001683D5 /* enemy.png */; };
+		D134D0831645614F0060011A /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D0811645614F0060011A /* bullet.mp3 */; };
+		D134D0841645614F0060011A /* gameBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D0821645614F0060011A /* gameBackground.mp3 */; };
+		D134D089164569590060011A /* gold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D086164569590060011A /* gold.mp3 */; };
+		D134D08A164569590060011A /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D087164569590060011A /* hit.mp3 */; };
+		D134D08B164569590060011A /* monstarsdie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D088164569590060011A /* monstarsdie.mp3 */; };
 		D19B6E571640DBB200EAB98E /* bulletAnimation.png in Resources */ = {isa = PBXBuildFile; fileRef = D19B6E561640DBB200EAB98E /* bulletAnimation.png */; };
 		D1BE57A4164005F50071A612 /* bullettype_2_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5780164005F50071A612 /* bullettype_2_0.png */; };
 		D1BE57A5164005F50071A612 /* bullettype_2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5781164005F50071A612 /* bullettype_2_1.png */; };
@@ -194,6 +199,11 @@
 		D111F626163D52C5001683D5 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		D111F627163D52C6001683D5 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		D111F630163D5C7C001683D5 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		D134D0811645614F0060011A /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
+		D134D0821645614F0060011A /* gameBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameBackground.mp3; sourceTree = "<group>"; };
+		D134D086164569590060011A /* gold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold.mp3; sourceTree = "<group>"; };
+		D134D087164569590060011A /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
+		D134D088164569590060011A /* monstarsdie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monstarsdie.mp3; sourceTree = "<group>"; };
 		D19B6E561640DBB200EAB98E /* bulletAnimation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletAnimation.png; sourceTree = "<group>"; };
 		D1BE5780164005F50071A612 /* bullettype_2_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_0.png; sourceTree = "<group>"; };
 		D1BE5781164005F50071A612 /* bullettype_2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_1.png; sourceTree = "<group>"; };
@@ -545,6 +555,18 @@
 			path = Enemy;
 			sourceTree = "<group>";
 		};
+		D134D0801645614F0060011A /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				D134D0811645614F0060011A /* bullet.mp3 */,
+				D134D0821645614F0060011A /* gameBackground.mp3 */,
+				D134D086164569590060011A /* gold.mp3 */,
+				D134D087164569590060011A /* hit.mp3 */,
+				D134D088164569590060011A /* monstarsdie.mp3 */,
+			);
+			path = Sound;
+			sourceTree = SOURCE_ROOT;
+		};
 		D1BE577F164005F50071A612 /* Bullet2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				D1CE12221636AAC800F08F00 /* Image */,
+				D134D0801645614F0060011A /* Sound */,
 				D1CE10AA16369EF800F08F00 /* Default.png */,
 				D1CE10AC16369EF800F08F00 /* fps_images.png */,
 				D1CE10AE16369EF800F08F00 /* Icon-72.png */,
@@ -1183,6 +1206,11 @@
 				D1BE57CF1640218B0071A612 /* gold1.png in Resources */,
 				D19B6E571640DBB200EAB98E /* bulletAnimation.png in Resources */,
 				2AB8E73A1642F56F00226D29 /* hpBar.png in Resources */,
+				D134D0831645614F0060011A /* bullet.mp3 in Resources */,
+				D134D0841645614F0060011A /* gameBackground.mp3 in Resources */,
+				D134D089164569590060011A /* gold.mp3 in Resources */,
+				D134D08A164569590060011A /* hit.mp3 in Resources */,
+				D134D08B164569590060011A /* monstarsdie.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #define BEGIN 1
 #define MOVED 2
 #define ENDED 3
-
+#import "SimpleAudioEngine.h"
 @implementation GameActionLayer
 -(id) init{
     if( self = [super init]){
@@ -64,6 +64,7 @@
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
                 if(tempEnemy.isDie == NO && [enemy hittingEnemy:tempEnemy :bullet] ){
+                    [[SimpleAudioEngine sharedEngine]playEffect:@"hit.mp3"];
                     [[character getMyAttack]removeBullet:bullet];
                     break;
                 }
@@ -76,17 +77,15 @@
         [gold moveToUser:character];
 }
 -(void) characterWithGold{
-    bool isBreak;
     for( Gold *gold in [enemy getGoldArray]){
         if([self pointDistance:[character getSide].position :gold.position] < [character getSide].contentSize.width/2 + gold.contentSize.width/2){
             [UserInfo sharedUserInfo].money += gold.gold;
             [enemy removeGold:gold];
-            isBreak = YES;
+            [[SimpleAudioEngine sharedEngine]playEffect:@"gold.mp3"];
             break;
         }
         if(gold.timer == YES){
             [enemy removeGold:gold];
-            isBreak = YES;
             break;
         }
         //if(isBreak)

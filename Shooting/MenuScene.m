@@ -9,7 +9,7 @@
 #import "MenuScene.h"
 #import "GameScene.h"
 #import "ShopScene.h"
-
+#import "SimpleAudioEngine.h"
 enum {GAMESCENE,SHOPSCENE};
 
 @implementation MenuScene
@@ -34,6 +34,14 @@ enum {GAMESCENE,SHOPSCENE};
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
+        CCSprite *logo = [CCSprite spriteWithFile:@"Default.png"];
+        logo.anchorPoint = ccp(0,0);
+        logo.position = ccp(0,0);
+        [logo runAction:[CCSequence actions:[CCDelayTime actionWithDuration:3],[CCCallFuncN actionWithTarget:self selector:@selector(endLogo:)], nil]];
+        [self addChild:logo z:10];
+        
+        [self loading];
+                
         bg = [[BackgroundLayer alloc]init];
         [bg menuScene];
         [self addChild:bg]; // add background
@@ -45,12 +53,15 @@ enum {GAMESCENE,SHOPSCENE};
         menuNavigation = [CCMenu menuWithItems:gameScene,shopScene, nil];
         [menuNavigation alignItemsVertically];
         [self addChild:menuNavigation];
-        
+        menuNavigation.isTouchEnabled = NO;
         info = [UserInfo sharedUserInfo];
 	}
 	return self;
 }
-
+-(void) endLogo:(CCSprite*)sender{
+    sender.opacity = 0;
+    menuNavigation.isTouchEnabled = YES;
+}
 -(void) selectMenu:(id)sender{
     CCMenuItem *receive = sender;
     if(receive.tag == GAMESCENE){
@@ -63,7 +74,14 @@ enum {GAMESCENE,SHOPSCENE};
         [[CCDirector sharedDirector] replaceScene:[ShopScene scene]];
     }
 }
+-(void) loading{
+    [[SimpleAudioEngine sharedEngine]preloadBackgroundMusic:@"gameBackground.mp3"];
+    [[SimpleAudioEngine sharedEngine]preloadEffect:@"bullet.mp3"];
+    [[SimpleAudioEngine sharedEngine]preloadEffect:@"gold.mp3"];
+    [[SimpleAudioEngine sharedEngine]preloadEffect:@"hit.mp3"];
+    [[SimpleAudioEngine sharedEngine]preloadEffect:@"monstarsdie.mp3"];
 
+}
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {

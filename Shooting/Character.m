@@ -123,7 +123,7 @@
     }
 }
 -(void) recovery{
-    if(hp + 5 < [UserInfo sharedUserInfo].originalHP)
+    if(hp + 5 <= [UserInfo sharedUserInfo].originalHP)
         hp += 5;
     [UserInfo sharedUserInfo].hp = hp;
 }

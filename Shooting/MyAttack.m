@@ -7,6 +7,7 @@
 //
 
 #import "MyAttack.h"
+#import "SimpleAudioEngine.h"
 #define BULLET 100
 #define BULLETTYPE2 -2
 @implementation MyAttack
@@ -23,6 +24,7 @@
     return self;
 }
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition{
+    [[SimpleAudioEngine sharedEngine]playEffect:@"bullet.mp3"];
     setUserPosition = userPosition; setTargetPosition = targetPosition;
     int bulletType = [UserInfo sharedUserInfo].myBullet;
     [self createBullet:bulletType:setTargetPosition]; 
