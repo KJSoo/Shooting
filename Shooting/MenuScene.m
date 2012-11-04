@@ -38,10 +38,6 @@ enum {GAMESCENE,SHOPSCENE};
         logo.anchorPoint = ccp(0,0);
         logo.position = ccp(0,0);
         [logo runAction:[CCSequence actions:[CCDelayTime actionWithDuration:3],[CCCallFuncN actionWithTarget:self selector:@selector(endLogo:)], nil]];
-        if([UserInfo sharedUserInfo].loading == NO){
-            [self addChild:logo z:10];
-            [UserInfo sharedUserInfo].loading = YES;
-        }
         [self loading];
                 
         bg = [[BackgroundLayer alloc]init];
@@ -55,8 +51,12 @@ enum {GAMESCENE,SHOPSCENE};
         menuNavigation = [CCMenu menuWithItems:gameScene,shopScene, nil];
         [menuNavigation alignItemsVertically];
         [self addChild:menuNavigation];
-        menuNavigation.isTouchEnabled = NO;
         info = [UserInfo sharedUserInfo];
+        if([UserInfo sharedUserInfo].loading == NO){
+            [self addChild:logo z:10];
+            [UserInfo sharedUserInfo].loading = YES;
+            menuNavigation.isTouchEnabled = NO;
+        }
 	}
 	return self;
 }

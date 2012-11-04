@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A7E855C16461F70008D3225 /* c1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A7E855B16461F70008D3225 /* c1.png */; };
+		2A7E856016465F4A008D3225 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E855F16465F4A008D3225 /* Helper.m */; };
 		2AB8E73A1642F56F00226D29 /* hpBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB8E7391642F56F00226D29 /* hpBar.png */; };
 		D111F628163D52C6001683D5 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = D111F627163D52C6001683D5 /* Enemy.m */; };
 		D111F631163D5C7C001683D5 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D111F630163D5C7C001683D5 /* enemy.png */; };
@@ -197,6 +198,8 @@
 
 /* Begin PBXFileReference section */
 		2A7E855B16461F70008D3225 /* c1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c1.png; sourceTree = "<group>"; };
+		2A7E855E16465F4A008D3225 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		2A7E855F16465F4A008D3225 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		2AB8E7391642F56F00226D29 /* hpBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hpBar.png; sourceTree = "<group>"; };
 		D111F626163D52C5001683D5 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		D111F627163D52C6001683D5 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
@@ -1038,6 +1041,8 @@
 				D1CE125E16385DF500F08F00 /* EnemyAttack.m */,
 				D1BE57CA164020200071A612 /* Gold.h */,
 				D1BE57CB164020200071A612 /* Gold.m */,
+				2A7E855E16465F4A008D3225 /* Helper.h */,
+				2A7E855F16465F4A008D3225 /* Helper.m */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1340,6 +1345,7 @@
 				D1F1837C163A2ECB00BED00D /* GameDebugLayer.m in Sources */,
 				D111F628163D52C6001683D5 /* Enemy.m in Sources */,
 				D1BE57CC164020210071A612 /* Gold.m in Sources */,
+				2A7E856016465F4A008D3225 /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
