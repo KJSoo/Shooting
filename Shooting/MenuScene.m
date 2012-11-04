@@ -38,8 +38,10 @@ enum {GAMESCENE,SHOPSCENE};
         logo.anchorPoint = ccp(0,0);
         logo.position = ccp(0,0);
         [logo runAction:[CCSequence actions:[CCDelayTime actionWithDuration:3],[CCCallFuncN actionWithTarget:self selector:@selector(endLogo:)], nil]];
-        [self addChild:logo z:10];
-        
+        if([UserInfo sharedUserInfo].loading == NO){
+            [self addChild:logo z:10];
+            [UserInfo sharedUserInfo].loading = YES;
+        }
         [self loading];
                 
         bg = [[BackgroundLayer alloc]init];

@@ -36,7 +36,7 @@
         [self createEnemy:1];
     }
     if(!isRelease)
-        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay-0.7],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay-0.5],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
 }
 -(void) createEnemy:(int)level{
     if(level == 1){

@@ -19,6 +19,7 @@
     CGPoint prePosition;
     MyAttack *attack;
     NSMutableArray *attackArray;
+    CCSprite *skin;
 }
 @property int magnetism;
 -(void) setPositions:(CGPoint)position mode:(int)mode;

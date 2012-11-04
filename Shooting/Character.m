@@ -7,6 +7,7 @@
 //
 
 #import "Character.h"
+#import "MenuScene.h"
 #define BEGIN 1
 #define MOVED 2
 #define ENDED 3
@@ -16,9 +17,12 @@
     if( self = [super init]){
         //self.position = ccp(160,240);
         int characterType = [UserInfo sharedUserInfo].character;
+        side = [[CCSprite alloc]initWithFile:@"side.png"];
+        target = [[CCSprite alloc]initWithFile:@"target.png"];
+        skin = [CCSprite alloc];
         if(characterType == 1){
-            side = [[CCSprite alloc]initWithFile:@"side.png"];
-            target = [[CCSprite alloc]initWithFile:@"target.png"];
+            skin = [skin initWithFile:@"c1.png"];
+            skin.position = ccp(160,240+11);
             hp = 100;
             magnetism = 80;
         }else if(characterType == 2){
@@ -44,6 +48,7 @@
         sens = [UserInfo sharedUserInfo].sensitive;
         attackArray = [[NSMutableArray alloc]init];
         
+        [self addChild:skin];
         [self schedule:@selector(recovery) interval:1];
     }
     return self;
@@ -66,8 +71,8 @@
     //상 하 이동 체크.
     if((side.position.y + side.contentSize.height/2 + position.y <= 480 && position.y > 0) || (side.position.y - side.contentSize.height/2 + position.y >= 0 && position.y < 0))
         side.position = ccp(side.position.x, side.position.y + position.y);
+    skin.position = ccp(side.position.x,side.position.y+11);  //c1 position
     [self moveTarget];
-    //NSLog(@"%f  %f",position.x,position.y);
 }
 -(void) moveTarget{
     float distance = pow(pow((side.position.x - target.position.x),2)+ pow((side.position.y-target.position.y),2), 0.5);
@@ -150,8 +155,10 @@
         [attackArray addObject:[NSNumber numberWithInt:enemy.enemyID]];
         hp -= enemy.power;
         NSLog(@"HP %d",hp);
-        if(hp<= 0)
+        if(hp<= 0){
+            [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
             NSLog(@"die");
+        }
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];
     }
     [UserInfo sharedUserInfo].hp = hp;
@@ -174,6 +181,7 @@
     [target release];
     [attack release];
     [attackArray release];
+    [skin release];
     [self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }

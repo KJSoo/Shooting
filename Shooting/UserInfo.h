@@ -17,11 +17,14 @@
     CGPoint userPosition;
     
     int money,point,hp,originalHP;
+    
+    BOOL loading;
 }
 @property int character,myBullet,amountMoney,level,originalHP;
 @property int sensitive;
 @property int money,point,exp,hp;
 @property float shootSpeed;
+@property BOOL loading;
 @property CGPoint userPosition;
 +(UserInfo*) sharedUserInfo;
 @end

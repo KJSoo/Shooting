@@ -37,8 +37,9 @@
         
         gameMenuLayer = [[GameMenuLayer alloc]init];
         [self addChild:gameMenuLayer z:1];
-        //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
-        //[self addChild:debug];
+        
+        GameDebugLayer *debug = [[GameDebugLayer alloc]init];
+        [self addChild:debug];
     }
     //[self performSelector:@selector(t) withObject:nil afterDelay:7];
     return self;

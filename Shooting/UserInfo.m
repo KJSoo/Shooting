@@ -15,6 +15,7 @@
 @synthesize shootSpeed;
 @synthesize userPosition;
 @synthesize money,point,exp,hp,originalHP;
+@synthesize loading;
 static UserInfo *info=nil;
 +(UserInfo*) sharedUserInfo{
     if(info == nil)
