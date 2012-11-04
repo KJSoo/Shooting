@@ -10,7 +10,8 @@
 #import "cocos2d.h"
 
 @interface Helper : CCSprite {
-    
+    int level;
+    int exp;
 }
 -(id) init:(int)type;
 @end

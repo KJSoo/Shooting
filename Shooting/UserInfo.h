@@ -19,6 +19,8 @@
     int money,point,hp,originalHP;
     
     BOOL loading;
+    
+    int expTable[30];
 }
 @property int character,myBullet,amountMoney,level,originalHP;
 @property int sensitive;
@@ -27,4 +29,6 @@
 @property BOOL loading;
 @property CGPoint userPosition;
 +(UserInfo*) sharedUserInfo;
+-(void) expTableInit;
+-(int*) getExpTable;
 @end

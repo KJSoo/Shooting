@@ -36,8 +36,20 @@ static UserInfo *info=nil;
         amountMoney = 0;
         sensitive = 2;
         shootSpeed = 0.2;
+        
+        [self expTableInit];
     }
     return self;
+}
+-(void) expTableInit{
+    expTable[0] = 1000;
+    for(int i = 1 ; i < 30 ; i ++)
+        expTable[i] = expTable[i-1] + expTable[i-1] * 0.2;
+    for(int i = 0 ; i < 30 ; i ++)
+        NSLog(@"%d",expTable[i]);
+}
+-(int*) getExpTable{
+    return expTable;
 }
 @end
 
