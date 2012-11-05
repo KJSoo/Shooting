@@ -39,8 +39,14 @@
         [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay-0.5],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
 }
 -(void) createEnemy:(int)level{
+    level = 1+ (arc4random()%2);
     if(level == 1){
-        Enemy *tempEnemy = [[Enemy alloc]initWithBatchNode:enemyBatchNode level:level];
+        //Enemy *tempEnemy = [[Enemy alloc]initWithBatchNode:enemyBatchNode level:level];
+        EnemyFirst *tempEnemy = [[EnemyFirst alloc]initWithBatchNode:enemyBatchNode];
+        [enemyBatchNode addChild:tempEnemy z:1 tag:ENEMY];
+    }else if(level == 2){
+        //Enemy *tempEnemy = [[Enemy alloc]initWithBatchNode:enemyBatchNode level:level];
+        EnemySecond *tempEnemy = [[EnemySecond alloc]initWithBatchNode:enemyBatchNode];
         [enemyBatchNode addChild:tempEnemy z:1 tag:ENEMY];
     }
 }

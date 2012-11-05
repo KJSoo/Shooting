@@ -23,7 +23,7 @@
         if(characterType == 1){
             skin = [skin initWithFile:@"c1.png"];
             skin.position = ccp(160,240+11);
-            hp = 100;
+            hp = 10000;
             magnetism = 80;
         }else if(characterType == 2){
         }else if(characterType == 3){
@@ -130,6 +130,8 @@
 -(void) recovery{
     if(hp + 5 <= [UserInfo sharedUserInfo].originalHP)
         hp += 5;
+    else if(hp + 5 > [UserInfo sharedUserInfo].originalHP)
+        hp = [UserInfo sharedUserInfo].originalHP;
     [UserInfo sharedUserInfo].hp = hp;
 }
 -(void) attack:(BOOL)present{

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Enemy.h"
+#import "EnemyFirst.h"
+#import "EnemySecond.h"
 #import "Gold.h"
 @interface EnemyAttack : CCNode {
     id selectWave;

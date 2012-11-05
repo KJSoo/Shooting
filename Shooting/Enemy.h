@@ -23,7 +23,8 @@
 @property BOOL appear,isDie;
 @property int hp,power,exp,money;
 @property unsigned int enemyID;
--(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode level:(int)enemyLevel;
+-(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode;
+-(void) settingPosition;
 -(void) appearAnimation;
 -(void) movePattern;
 -(void) moveUser;

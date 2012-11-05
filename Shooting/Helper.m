@@ -11,6 +11,6 @@
 
 @implementation Helper
 -(id) init:(int)type{
-
+    return self;
 }
 @end

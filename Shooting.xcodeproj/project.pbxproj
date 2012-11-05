@@ -17,6 +17,8 @@
 		D134D089164569590060011A /* gold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D086164569590060011A /* gold.mp3 */; };
 		D134D08A164569590060011A /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D087164569590060011A /* hit.mp3 */; };
 		D134D08B164569590060011A /* monstarsdie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D134D088164569590060011A /* monstarsdie.mp3 */; };
+		D134D3A81647C1F70060011A /* EnemyFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = D134D3A71647C1F70060011A /* EnemyFirst.m */; };
+		D134D3AB1647C5690060011A /* EnemySecond.m in Sources */ = {isa = PBXBuildFile; fileRef = D134D3AA1647C5690060011A /* EnemySecond.m */; };
 		D19B6E571640DBB200EAB98E /* bulletAnimation.png in Resources */ = {isa = PBXBuildFile; fileRef = D19B6E561640DBB200EAB98E /* bulletAnimation.png */; };
 		D1BE57A4164005F50071A612 /* bullettype_2_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5780164005F50071A612 /* bullettype_2_0.png */; };
 		D1BE57A5164005F50071A612 /* bullettype_2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5781164005F50071A612 /* bullettype_2_1.png */; };
@@ -209,6 +211,10 @@
 		D134D086164569590060011A /* gold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold.mp3; sourceTree = "<group>"; };
 		D134D087164569590060011A /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
 		D134D088164569590060011A /* monstarsdie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monstarsdie.mp3; sourceTree = "<group>"; };
+		D134D3A61647C1F70060011A /* EnemyFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFirst.h; sourceTree = "<group>"; };
+		D134D3A71647C1F70060011A /* EnemyFirst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyFirst.m; sourceTree = "<group>"; };
+		D134D3A91647C5690060011A /* EnemySecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemySecond.h; sourceTree = "<group>"; };
+		D134D3AA1647C5690060011A /* EnemySecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemySecond.m; sourceTree = "<group>"; };
 		D19B6E561640DBB200EAB98E /* bulletAnimation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletAnimation.png; sourceTree = "<group>"; };
 		D1BE5780164005F50071A612 /* bullettype_2_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_0.png; sourceTree = "<group>"; };
 		D1BE5781164005F50071A612 /* bullettype_2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullettype_2_1.png; sourceTree = "<group>"; };
@@ -571,6 +577,19 @@
 			);
 			path = Sound;
 			sourceTree = SOURCE_ROOT;
+		};
+		D134D3A41647C1CF0060011A /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				D111F626163D52C5001683D5 /* Enemy.h */,
+				D111F627163D52C6001683D5 /* Enemy.m */,
+				D134D3A61647C1F70060011A /* EnemyFirst.h */,
+				D134D3A71647C1F70060011A /* EnemyFirst.m */,
+				D134D3A91647C5690060011A /* EnemySecond.h */,
+				D134D3AA1647C5690060011A /* EnemySecond.m */,
+			);
+			name = Enemy;
+			sourceTree = "<group>";
 		};
 		D1BE577F164005F50071A612 /* Bullet2 */ = {
 			isa = PBXGroup;
@@ -1023,6 +1042,7 @@
 		D1CE120A16369F2300F08F00 /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				D134D3A41647C1CF0060011A /* Enemy */,
 				D1CE122C1636AED500F08F00 /* Cloud.h */,
 				D1CE122D1636AED500F08F00 /* Cloud.m */,
 				D1CE123F1636EC6600F08F00 /* Character.h */,
@@ -1035,8 +1055,6 @@
 				D1CE125816383DA500F08F00 /* EnemyBullet.m */,
 				D1CE125A16383EB500F08F00 /* MyAttack.h */,
 				D1CE125B16383EB600F08F00 /* MyAttack.m */,
-				D111F626163D52C5001683D5 /* Enemy.h */,
-				D111F627163D52C6001683D5 /* Enemy.m */,
 				D1CE125D16385DF500F08F00 /* EnemyAttack.h */,
 				D1CE125E16385DF500F08F00 /* EnemyAttack.m */,
 				D1BE57CA164020200071A612 /* Gold.h */,
@@ -1346,6 +1364,8 @@
 				D111F628163D52C6001683D5 /* Enemy.m in Sources */,
 				D1BE57CC164020210071A612 /* Gold.m in Sources */,
 				2A7E856016465F4A008D3225 /* Helper.m in Sources */,
+				D134D3A81647C1F70060011A /* EnemyFirst.m in Sources */,
+				D134D3AB1647C5690060011A /* EnemySecond.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
