@@ -11,7 +11,7 @@
 
 @implementation UserInfo
 @synthesize character,myBullet,amountMoney,level;
-@synthesize sensitive,skillType;
+@synthesize sensitive,skillType,delay;
 @synthesize shootSpeed;
 @synthesize userPosition;
 @synthesize money,point,exp,hp,originalHP;
@@ -30,6 +30,7 @@ static UserInfo *info=nil;
         point=0;
         exp=0;
         hp=0;
+        delay = 10;
         
         level = 30;
         character = 1;

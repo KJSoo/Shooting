@@ -23,7 +23,7 @@
         if(characterType == 1){
             skin = [skin initWithFile:@"c1.png"];
             skin.position = ccp(160,240+11);
-            hp = 10000;
+            hp = 100;
             magnetism = 80;
         }else if(characterType == 2){
         }else if(characterType == 3){

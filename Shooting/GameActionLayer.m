@@ -31,6 +31,12 @@
     CGPoint location=[touch locationInView:[touch view]];
     location=[[CCDirector sharedDirector] convertToGL:location];
     [character setPositions:location mode:BEGIN];
+    nexttouch = [[NSDate date] timeIntervalSince1970];
+    if(nexttouch - firstTouch < 1){
+        [character skill];
+        nexttouch = 0;
+    }
+    firstTouch = nexttouch;
 }
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch*touch=[touches anyObject];
@@ -40,7 +46,6 @@
 }
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [character setPositions:CGPointZero mode:ENDED];
-    [character skill];
 }
 -(void) checkCrash{
     [self characterWithMonstars];

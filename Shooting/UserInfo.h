@@ -12,7 +12,7 @@
 @interface UserInfo : NSObject
 {
     int character,myBullet,amountMoney,exp,level;// 각각 캐릭터, 총알 레벨, 보유 자산
-    int sensitive,skillType; // 감도
+    int sensitive,skillType,delay; // 감도
     float shootSpeed;
     CGPoint userPosition;
     
@@ -24,7 +24,7 @@
     int expTable[30];
 }
 @property int character,myBullet,amountMoney,level,originalHP;
-@property int sensitive,skillType;
+@property int sensitive,skillType,delay;
 @property int money,point,exp,hp;
 @property float shootSpeed;
 @property BOOL loading;

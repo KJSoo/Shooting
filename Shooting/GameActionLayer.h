@@ -10,10 +10,13 @@
 #import "cocos2d.h"
 #import "Character.h"
 #import "EnemyAttack.h"
+#import "time.h"
 
 @interface GameActionLayer : CCLayer {
     Character *character;
     EnemyAttack *enemy;
+        
+    double firstTouch,nexttouch;
 }
 -(void) checkCrash;
 -(void) characterWithMonstars;
