@@ -34,7 +34,7 @@ enum {GAMESCENE,SHOPSCENE};
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
-        CCSprite *logo = [CCSprite spriteWithFile:@"Default.png"];
+        CCSprite *logo = [CCSprite spriteWithFile:@"logo.png"];
         logo.anchorPoint = ccp(0,0);
         logo.position = ccp(0,0);
         [logo runAction:[CCSequence actions:[CCDelayTime actionWithDuration:3],[CCCallFuncN actionWithTarget:self selector:@selector(endLogo:)], nil]];
@@ -76,6 +76,8 @@ enum {GAMESCENE,SHOPSCENE};
         [[CCDirector sharedDirector] replaceScene:[ShopScene scene]];
     }
 }
+
+
 -(void) loading{
     [[SimpleAudioEngine sharedEngine]preloadBackgroundMusic:@"gameBackground.mp3"];
     [[SimpleAudioEngine sharedEngine]preloadEffect:@"bullet.mp3"];

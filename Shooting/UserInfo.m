@@ -11,7 +11,7 @@
 
 @implementation UserInfo
 @synthesize character,myBullet,amountMoney,level;
-@synthesize sensitive;
+@synthesize sensitive,skillType;
 @synthesize shootSpeed;
 @synthesize userPosition;
 @synthesize money,point,exp,hp,originalHP;
@@ -31,10 +31,12 @@ static UserInfo *info=nil;
         exp=0;
         hp=0;
         
+        level = 30;
         character = 1;
         myBullet = 5;
         amountMoney = 0;
         sensitive = 2;
+        skillType = 1;
         shootSpeed = 0.2;
         
         [self expTableInit];

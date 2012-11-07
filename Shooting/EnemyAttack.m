@@ -16,7 +16,7 @@
     if(self = [super init]){
         enemyBatchNode = [[CCSpriteBatchNode alloc]initWithFile:@"enemy.png" capacity:100];
         [self addChild:enemyBatchNode z:2];
-        delay = 1;
+        delay = 0.3;
         
         dieAnimationArray = [[NSMutableArray alloc]init];
         for(int i=0 ; i<16 ; i++){
@@ -36,7 +36,7 @@
         [self createEnemy:1];
     }
     if(!isRelease)
-        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay-0.5],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
+        [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:delay],[CCCallFunc actionWithTarget:self selector:@selector(waveSetting)], nil]];
 }
 -(void) createEnemy:(int)level{
     level = 1+ (arc4random()%2);

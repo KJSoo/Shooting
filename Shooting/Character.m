@@ -45,6 +45,8 @@
         [self addChild:attack];
         [self attack:YES];
         
+        mySkill = [[Skill alloc]init:self :attack];
+        
         sens = [UserInfo sharedUserInfo].sensitive;
         attackArray = [[NSMutableArray alloc]init];
         
@@ -165,6 +167,11 @@
     }
     [UserInfo sharedUserInfo].hp = hp;
 }
+
+-(void) skill{
+    [mySkill skill];
+}
+
 -(void) removeID:(NSNumber*)enemyID{
     [attackArray removeObject:enemyID];
 }
@@ -184,6 +191,7 @@
     [attack release];
     [attackArray release];
     [skin release];
+    [mySkill release];
     [self removeAllChildrenWithCleanup:YES];
     [super dealloc];
 }

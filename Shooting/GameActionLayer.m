@@ -40,6 +40,7 @@
 }
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [character setPositions:CGPointZero mode:ENDED];
+    [character skill];
 }
 -(void) checkCrash{
     [self characterWithMonstars];

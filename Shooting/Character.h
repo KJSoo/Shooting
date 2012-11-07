@@ -11,6 +11,8 @@
 #import "UserInfo.h"
 #import "MyAttack.h"
 #import "Enemy.h"
+#import "Skill.h"
+
 @interface Character : CCSprite {
     int character,sens,hp,magnetism;
     float space,shootSpeed;;  //과녁과 캐릭터 사의에 간격
@@ -20,6 +22,8 @@
     MyAttack *attack;
     NSMutableArray *attackArray;
     CCSprite *skin;
+    
+    Skill *mySkill;
 }
 @property int magnetism;
 -(void) setPositions:(CGPoint)position mode:(int)mode;
@@ -31,6 +35,9 @@
 -(void) shootBullet;
 -(void) hitting:(Enemy*)enemy;
 -(void) removeID:(id)enemyID;
+
+-(void) skill;
+
 -(CCArray*) getAttack;
 -(CCSprite*) getSide;
 -(MyAttack*) getMyAttack;

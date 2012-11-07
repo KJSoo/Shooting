@@ -54,7 +54,6 @@
         [self createBullet:BULLETTYPE2 :[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-15 :setUserPosition :targetPosition]];
         
     }
-
 }
 -(CGPoint) anglePoint:(float)angle:(CGPoint)mainPosition:(CGPoint)targetPosition{
     float radian = angle / 180 * M_PI;
