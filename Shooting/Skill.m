@@ -13,14 +13,28 @@
     if(self = [super init]){
         character = charc;
         attack = attac;
+        isDelay = NO;
     }
     return self;
 }
 -(void) skill{
+    if(isDelay)
+        return;
     int type = [UserInfo sharedUserInfo].skillType;
     if(type == 1){
         skillLevel = 1 + ([UserInfo sharedUserInfo].level)/10;
         [self allShoot];
+    }
+    isDelay = YES;
+    delay = [UserInfo sharedUserInfo].delay;
+    timer = [[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(coolTime) userInfo:nil repeats:YES]retain];
+}
+-(void) coolTime{
+    --delay;
+    if(delay == 0){
+        isDelay = NO;
+        [timer invalidate];
+        [timer release];
     }
 }
 -(void) allShoot{
@@ -44,5 +58,9 @@
 -(void) allShootAngle:(float)angle{
     [attack attack:[character getSide].position :[attack anglePoint:angle :[character getSide].position :ccp(0,0)]];
 
+}
+-(void) dealloc{
+    NSLog(@"skill release");
+    [super dealloc];
 }
 @end
