@@ -8,6 +8,8 @@
 
 #import "Character.h"
 #import "MenuScene.h"
+#import "SimpleAudioEngine.h"
+
 #define BEGIN 1
 #define MOVED 2
 #define ENDED 3
@@ -52,6 +54,13 @@
         
         [self addChild:skin];
         [self schedule:@selector(recovery) interval:1];
+        
+        helper[0] = [[Helper alloc]init:1 :self];
+        helper[1] = [Helper alloc];
+        helper[2] = [Helper alloc];
+        
+        [self addChild:helper[0]];
+        [helper[0] returnType];
     }
     return self;
 }
@@ -147,6 +156,8 @@
 -(void) shootBullet{
     [UserInfo sharedUserInfo].userPosition = side.position;
     [attack attack:side.position :target.position];
+    [attack petAttack:helper[0].position :target.position :100];
+    
     if(shootSpeed != [UserInfo sharedUserInfo].shootSpeed){
         [self attack:NO];
         [self attack:YES];
@@ -161,6 +172,7 @@
         NSLog(@"HP %d",hp);
         if(hp<= 0){
             [[CCDirector sharedDirector] replaceScene:[MenuScene scene]];
+            [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
             NSLog(@"die");
         }
         [self performSelector:@selector(removeID:) withObject:[NSNumber numberWithInt:enemy.enemyID] afterDelay:1];
@@ -181,6 +193,9 @@
 -(CCSprite*) getSide{
     return side;
 }
+-(CCSprite*) getTarget{
+    return target;
+}
 -(MyAttack*) getMyAttack{
     return attack;
 }
@@ -193,6 +208,11 @@
     [skin release];
     [mySkill release];
     [self removeAllChildrenWithCleanup:YES];
+    
+    [helper[0] release];
+    [helper[1] release];
+    [helper[2] release];
+    
     [super dealloc];
 }
 @end

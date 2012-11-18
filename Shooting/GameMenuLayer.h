@@ -13,6 +13,12 @@
     UserInfo *info;
     float piece;
     CCSpriteBatchNode *hpBatch;
+    
+    int presentHP,combo;
+    int time; // 시간
 }
 -(void) hpChange;
+-(void) fillCombo;
+-(void) refreshScore;
+-(void) addTime;
 @end

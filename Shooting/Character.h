@@ -12,6 +12,7 @@
 #import "MyAttack.h"
 #import "Enemy.h"
 #import "Skill.h"
+#import "Helper.h"
 
 @interface Character : CCSprite {
     int character,sens,hp,magnetism;
@@ -24,6 +25,7 @@
     CCSprite *skin;
     
     Skill *mySkill;
+    Helper *helper[3];
 }
 @property int magnetism;
 -(void) setPositions:(CGPoint)position mode:(int)mode;
@@ -40,5 +42,6 @@
 
 -(CCArray*) getAttack;
 -(CCSprite*) getSide;
+-(CCSprite*) getTarget;
 -(MyAttack*) getMyAttack;
 @end

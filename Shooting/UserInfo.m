@@ -15,7 +15,7 @@
 @synthesize shootSpeed;
 @synthesize userPosition;
 @synthesize money,point,exp,hp,originalHP;
-@synthesize loading;
+@synthesize loading,isEffect,isBgm;
 static UserInfo *info=nil;
 +(UserInfo*) sharedUserInfo{
     if(info == nil)
@@ -40,6 +40,8 @@ static UserInfo *info=nil;
         skillType = 1;
         shootSpeed = 0.2;
         
+        isEffect = YES;
+        isBgm = YES;
         [self expTableInit];
     }
     return self;

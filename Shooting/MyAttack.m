@@ -24,9 +24,14 @@
     return self;
 }
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition{
-    [[SimpleAudioEngine sharedEngine]playEffect:@"bullet.mp3"];
+    if([UserInfo sharedUserInfo].isEffect)
+        [[SimpleAudioEngine sharedEngine]playEffect:@"bullet.mp3"];
     setUserPosition = userPosition; setTargetPosition = targetPosition;
     int bulletType = [UserInfo sharedUserInfo].myBullet;
+    [self createBullet:bulletType:setTargetPosition]; 
+}
+-(void) petAttack:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType{
+    setUserPosition = userPosition; setTargetPosition = targetPosition;
     [self createBullet:bulletType:setTargetPosition]; 
 }
 -(void) createBullet:(int)bulletType:(CGPoint)targetPosition{
@@ -53,7 +58,10 @@
         [self createBullet:BULLETTYPE2 :[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]+15 :setUserPosition :targetPosition]];
         [self createBullet:BULLETTYPE2 :[self anglePoint:[self getAngle:setUserPosition :setTargetPosition]-15 :setUserPosition :targetPosition]];
         
-    }
+    }else if(bulletType == 100){// 100이후는 펫의 bullet
+        MyBullet *bullet = [[MyBullet alloc]init:setUserPosition:targetPosition:100:0];
+        [bullet runAction:[CCSequence actions:[CCMoveTo actionWithDuration:bullet.bulletSpeed position:bullet.destinationPosition],[CCCallFuncN actionWithTarget:self selector:@selector(removeBullet:)],nil]];
+        [self addChild:bullet z:1 tag:BULLET];    }
 }
 -(CGPoint) anglePoint:(float)angle:(CGPoint)mainPosition:(CGPoint)targetPosition{
     float radian = angle / 180 * M_PI;

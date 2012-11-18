@@ -20,6 +20,7 @@
     exp = 3;
     money = 20;
     speed = 3;// 1초당 움직일 각도
+    score = 200; // 점수
     for(int i=0 ; i < 9 ; i++){
         appearFrame[i] = [[CCSpriteFrame alloc] initWithTexture:batchNode.texture rect:CGRectMake(37 * i, 90, 37, 35)];
         appearFrameCount = i;

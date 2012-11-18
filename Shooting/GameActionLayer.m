@@ -70,7 +70,8 @@
                 continue;
             if(tempEnemy.contentSize.width/2 + bullet.contentSize.width/2 > [self pointDistance:tempEnemy.position :bullet.position]){
                 if(tempEnemy.isDie == NO && [enemy hittingEnemy:tempEnemy :bullet] ){
-                    [[SimpleAudioEngine sharedEngine]playEffect:@"hit.mp3"];
+                    if([UserInfo sharedUserInfo].isEffect)
+                        [[SimpleAudioEngine sharedEngine]playEffect:@"hit.mp3"];
                     [[character getMyAttack]removeBullet:bullet];
                     break;
                 }
@@ -87,7 +88,8 @@
         if([self pointDistance:[character getSide].position :gold.position] < [character getSide].contentSize.width/2 + gold.contentSize.width/2){
             [UserInfo sharedUserInfo].money += gold.gold;
             [enemy removeGold:gold];
-            [[SimpleAudioEngine sharedEngine]playEffect:@"gold.mp3"];
+            if([UserInfo sharedUserInfo].isEffect)
+                [[SimpleAudioEngine sharedEngine]playEffect:@"gold.mp3"];
             break;
         }
         if(gold.timer == YES){

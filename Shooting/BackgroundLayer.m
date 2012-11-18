@@ -22,13 +22,9 @@
     sky.anchorPoint = CGPointZero;
     [self addChild:sky];
     
-    cloud = [[Cloud alloc]init];
-    cloud.anchorPoint = CGPointZero;
-    [self addChild:cloud];
 }
 -(void) dealloc{
     NSLog(@"BackgroundLayer release");
-    [cloud release];
     [super dealloc];
 }
 @end

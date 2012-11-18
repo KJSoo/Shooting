@@ -10,6 +10,7 @@
 #import "GameDebugLayer.h"
 #import "MenuScene.h"
 #import "SimpleAudioEngine.h"
+#import "UserInfo.h"
 @implementation GameScene
 +(CCScene *) scene
 {
@@ -27,10 +28,14 @@
 }
 -(id) init{
     if(self = [super init]){
-        [[SimpleAudioEngine sharedEngine]playBackgroundMusic:@"gameBackground.mp3" loop:YES];
+        if([UserInfo sharedUserInfo].isBgm)
+            [[SimpleAudioEngine sharedEngine]playBackgroundMusic:@"gameBackground.mp3" loop:YES];
         bg = [[BackgroundLayer alloc]init];
         [bg gameScene];
         [self addChild:bg z:0]; // add background
+        
+        [UserInfo sharedUserInfo].point = 0;
+        [UserInfo sharedUserInfo].money = 0;
         
         gameActionLayer = [[GameActionLayer alloc]init];
         [self addChild:gameActionLayer z:2];
@@ -38,8 +43,8 @@
         gameMenuLayer = [[GameMenuLayer alloc]init];
         [self addChild:gameMenuLayer z:1];
         
-        GameDebugLayer *debug = [[GameDebugLayer alloc]init];
-        [self addChild:debug];
+        //GameDebugLayer *debug = [[GameDebugLayer alloc]init];
+        //[self addChild:debug];
     }
     //[self performSelector:@selector(t) withObject:nil afterDelay:7];
     return self;

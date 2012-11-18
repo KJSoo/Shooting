@@ -25,10 +25,17 @@
             [hpBatch addChild:gauge z:0 tag:i];
         }
         [self schedule:@selector(hpChange) interval:0.05];
+        [self schedule:@selector(fillCombo) interval:0.1];
+        [self schedule:@selector(addTime) interval:1];
+        [self schedule:@selector(refreshScore)];
     }
     return self;
 }
 -(void) hpChange{
+    if(0 < (presentHP - info.hp) && (presentHP - info.hp)){
+        NSLog(@"hit");
+    }
+    presentHP = info.hp;
     float persent = (piece / 100.0) *((float)info.hp/(float)info.originalHP)*100;
     int count = (int)persent;
     for(CCSprite *gauge in [hpBatch children]){
@@ -43,10 +50,23 @@
         }
     }
 }
+-(void) fillCombo{
+    combo += 1;
+    if(combo == 100){
+        combo = 0;
+    }
+}
+-(void) addTime{
+    ++time;
+}
+-(void) refreshScore{
+    ++info.point;
+    NSLog(@"%d",info.money);
+}
 -(void) dealloc{
-    NSLog(@"GameMenuLayer release");
     [hpBatch removeAllChildrenWithCleanup:YES];
     [hpBatch release];
+    NSLog(@"GameMenuLayer release");
     [super dealloc];
 }
 @end

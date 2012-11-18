@@ -13,7 +13,7 @@
 
 @interface Enemy : CCSprite {
     unsigned int enemyID;
-    int hp,power,level,exp,money;
+    int hp,power,level,exp,money,score;
     int presentAppearFrame,appearFrameCount,presentMoveFrame,moveFrameCount;
     BOOL appear,plus,isDie;
     float speed;
@@ -21,7 +21,7 @@
     id moveAction;
 }
 @property BOOL appear,isDie;
-@property int hp,power,exp,money;
+@property int hp,power,exp,money,score;
 @property unsigned int enemyID;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode;
 -(void) settingPosition;

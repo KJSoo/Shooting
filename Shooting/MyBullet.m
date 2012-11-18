@@ -20,6 +20,10 @@
         self = [super initWithFile:[NSString stringWithFormat:@"bullettype_2_%d.png",angle/10]];
         bulletSpeed = 1.2;
         bulletPower = 15;
+    }else if(bulletType == 100){
+        self = [super initWithFile:@"helperBullet1.png"];
+        bulletSpeed = 1;
+        bulletPower = 30;
     }
     [self settingDestinationPosition:userPosition :targetPosition :500];
     self.position = userPosition;

@@ -22,12 +22,14 @@
     BOOL loading;
 
     int expTable[30];
+    
+    BOOL isEffect,isBgm;
 }
 @property int character,myBullet,amountMoney,level,originalHP;
 @property int sensitive,skillType,delay;
 @property int money,point,exp,hp;
 @property float shootSpeed;
-@property BOOL loading;
+@property BOOL loading,isEffect,isBgm;
 @property CGPoint userPosition;
 +(UserInfo*) sharedUserInfo;
 -(void) expTableInit;

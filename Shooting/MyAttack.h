@@ -17,7 +17,10 @@
     CCAnimation *animation;
 }
 -(void) attack:(CGPoint)userPosition:(CGPoint)targetPosition;
+-(void) petAttack:(CGPoint)userPosition:(CGPoint)targetPosition:(int)bulletType;
 -(void) createBullet:(int)bulletType:(CGPoint)targetPosition;
+
+
 -(CGPoint) anglePoint:(float)angle:(CGPoint)mainPosition:(CGPoint)targetPosition;
 -(float) getDistance:(CGPoint)mainPosition:(CGPoint)targetPosition;
 -(float) getAngle:(CGPoint)mainPosition:(CGPoint)targetPostion;

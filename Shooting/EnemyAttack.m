@@ -48,6 +48,8 @@
         //Enemy *tempEnemy = [[Enemy alloc]initWithBatchNode:enemyBatchNode level:level];
         EnemySecond *tempEnemy = [[EnemySecond alloc]initWithBatchNode:enemyBatchNode];
         [enemyBatchNode addChild:tempEnemy z:1 tag:ENEMY];
+    }else if(level == 3){
+    
     }
 }
 -(int) hittingEnemy:(Enemy*)enemy:(MyBullet*)bullet{
@@ -63,13 +65,14 @@
     }
 }
 -(void) removeEnemy:(Enemy*)sender{
-    [[SimpleAudioEngine sharedEngine]playEffect:@"monstarsdie.mp3"];
+    if([UserInfo sharedUserInfo].isEffect)
+        [[SimpleAudioEngine sharedEngine]playEffect:@"monstarsdie.mp3"];
+    [UserInfo sharedUserInfo].point += sender.score;
     Gold *gold = [[Gold alloc]init:sender];
     [self addChild:gold z:1 tag:GOLD];
     [goldArray addObject:gold];
     [sender stopAllActions];
     [sender unscheduleAllSelectors];
-    //[sender runAction:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:YES]];
     [sender runAction:[CCSequence actions:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:YES],[CCCallFuncN actionWithTarget:self selector:@selector(realRemoveEnemy:)], nil]];
     //[sender release];
     //[enemyBatchNode removeChild:sender cleanup:YES];

@@ -11,7 +11,7 @@
 
 @implementation Enemy
 @synthesize appear,isDie;
-@synthesize hp,power,exp,enemyID,money;
+@synthesize hp,power,exp,enemyID,money,score;
 -(id) initWithBatchNode:(CCSpriteBatchNode*)batchNode{
     return self;
 }

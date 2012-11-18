@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Cloud.h"
 
 @interface BackgroundLayer : CCLayer {
-    Cloud *cloud;
 }
 -(void) menuScene;
 -(void) gameScene;
